@@ -59,6 +59,12 @@
       "description": "Engineering practice — architecture, epic design, implementation, code review, merge requests, docs, debugging, and technical debt."
     },
     {
+      "name": "product-management",
+      "displayName": "Product Management",
+      "source": "./plugins/practices/product-management",
+      "description": "Product management practice — strategy, backlog, tasks, sprint planning, validation, specs, stakeholder updates, research, competitive analysis, metrics, and brainstorming."
+    },
+    {
       "name": "frontend-engineer",
       "displayName": "Frontend Engineer",
       "source": "./plugins/agents/frontend-engineer",

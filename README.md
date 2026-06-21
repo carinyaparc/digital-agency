@@ -1,4 +1,4 @@
-# Digital Agency by Carinya Digital Services
+# Digital Agency by Carinya Parc
 
 Reference agents, skills, and data connections for a full-service digital agency workflows - digital strategy & growth, creative & content, web development & technical, and operations.
 
