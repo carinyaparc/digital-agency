@@ -2,11 +2,11 @@
   "name": "engineering",
   "displayName": "Engineering",
   "version": "0.1.0",
-  "description": "Engineering practice: skills for implementing, reviewing, and shipping frontend work — implement tasks against design.md and tasks.md, code review with acceptance-criteria and design-drift checks, and create merge requests. Install on its own for the delivery skills, or use with the Frontend Engineer agent for a full workflow.",
+  "description": "Engineering practice — architecture (solution, adr), epic design, implementation, code review, merge requests, documentation passes, debugging, and technical debt. Delivery skills follow docs/work/{epic}/ conventions; install with Frontend Engineer agent or standalone.",
   "author": {
     "name": "Carinya Parc Digital Services"
   },
   "license": "MIT",
-  "keywords": ["engineering", "implement", "code-review", "merge-request", "react", "nextjs", "typescript"],
+  "keywords": ["engineering", "architecture", "adr", "design", "implement", "code-review", "merge-request", "debug", "tech-debt", "documentation"],
   "skills": "./skills/"
 }

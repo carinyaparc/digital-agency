@@ -56,7 +56,7 @@
       "name": "engineering",
       "displayName": "Engineering",
       "source": "./plugins/practices/engineering",
-      "description": "Delivery skills for frontend work — implement tasks against design.md and tasks.md, code review with acceptance-criteria and design-drift checks, and create merge requests."
+      "description": "Engineering practice — architecture, epic design, implementation, code review, merge requests, docs, debugging, and technical debt."
     },
     {
       "name": "frontend-engineer",

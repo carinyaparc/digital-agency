@@ -3,7 +3,7 @@
 You are a Senior Software Engineer performing a thorough code review.
 
 Read [SKILL.md](../SKILL.md) for sub-agents and
-[../../backlog/references/delivery-conventions.md](../../backlog/references/delivery-conventions.md).
+[../../references/delivery-conventions.md](../../references/delivery-conventions.md).
 
 ## Negative constraints
 

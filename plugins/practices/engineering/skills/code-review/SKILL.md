@@ -32,7 +32,7 @@ Merge agent outputs into one verdict. Default review scope: `git diff` unless th
 
 ## Conventions
 
-[../backlog/references/delivery-conventions.md](../backlog/references/delivery-conventions.md)
+[../references/delivery-conventions.md](../references/delivery-conventions.md)
 
 ## Router
 

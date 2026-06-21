@@ -78,7 +78,7 @@ Install verticals for the workflows you need.
 
 | Plugin | What it adds |
 |---|---|
-| **[engineering](./plugins/practices/engineering)** | Feature delivery, coding, component development, code review. |
+| **[engineering](./plugins/practices/engineering)** | Architecture, epic design, implementation, code review, debugging, and technical debt. |
 
 ## MCP Integrations
 
@@ -110,14 +110,21 @@ These are reference templates — they get better when you tune them to how your
 ## Skill & Command Reference
 
 <details>
-<summary><b>engineering</b> — implement, code review, create merge request</summary>
+<summary><b>engineering</b> — solution, adr, design, implement, code review, docs, debug, tech-debt</summary>
+
+See [engineering README](./plugins/practices/engineering/README.md) for full detail.
 
 | Skill | Modes | Description | Artefact |
 | ----- | ----- | ----------- | -------- |
+| **solution** | write, review, refine | System architecture (stub or full) | `docs/architecture/solution.md` |
+| **adr** | plan, write, review | Architecture decision register and ADR files | `register.md`, `ADR-NNNN.md` |
+| **design** | write, review | Epic-level technical design | `docs/work/{epic}/design.md` |
 | **implement** | — | Implement a task against approved design and tasks | code |
-| **code-review** | review | Review a branch or PR against design.md and tasks.md acceptance criteria | code review |
-| **code-review fix** | fix | Address review findings without behaviour changes | code |
+| **code-review** | review, fix | Review a branch or PR; fix addresses findings | code review / code |
 | **create-mr** | run | Merge request description from the branch | MR / PR |
+| **docs** | review, refine | Pre-sprint or sprint-end documentation pass | review / `refine-session.md` |
+| **debug** | run | Reproduce, isolate, diagnose, and fix bugs | debug report |
+| **tech-debt** | run | Prioritize technical debt remediation | remediation plan |
 
 </details>
 
