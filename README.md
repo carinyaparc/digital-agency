@@ -80,6 +80,7 @@ Install functional plugins for the workflows you need.
 |---|---|
 | **[engineering](./plugins/practices/engineering)** | Architecture, epic design, implementation, code review, debugging, and technical debt. |
 | **[product-management](./plugins/practices/product-management)** | Product strategy, roadmap, backlog, tasks, sprint planning, validation, specs, stakeholder updates, research, competitive analysis, metrics, and brainstorming. |
+| **[brand](./plugins/practices/brand)** | Visual brand guide and brand voice lifecycle — discover, write, review, refine, and enforce on-brand copy. |
 
 ## MCP Integrations
 
@@ -104,7 +105,7 @@ These are reference templates — they get better when you tune them to how your
 
 - **Swap connectors** — fork a connector under `plugins/connectors/` or point `.mcp.json` at your data providers and internal systems.
 - **Add firm context** — drop your terminology, processes, and formatting standards into skill files.
-- **Bring your brand voice** — `/brand-voice` teaches agents your brand voice, writing style and structure.
+- **Bring your brand voice** — `/brand-voice write` and `/brand-voice enforce` teach agents your voice; `/brand-guide write` for visual identity in `docs/brand/`.
 - **Adjust agent scope** — edit `agents/<slug>.md` to match how your team actually runs the workflow.
 - **Add your own** — copy the structure for workflows we haven't covered.
 
@@ -126,6 +127,18 @@ See [engineering README](./plugins/practices/engineering/README.md) for full det
 | **docs** | review, refine | Pre-sprint or sprint-end documentation pass | review / `refine-session.md` |
 | **debug** | run | Reproduce, isolate, diagnose, and fix bugs | debug report |
 | **tech-debt** | run | Prioritize technical debt remediation | remediation plan |
+
+</details>
+
+<details>
+<summary><b>brand</b> — brand-guide, brand-voice</summary>
+
+See [brand README](./plugins/practices/brand/README.md) for full detail.
+
+| Skill | Modes | Description | Artefact |
+| ----- | ----- | ----------- | -------- |
+| **brand-guide** | write, review, refine | Visual identity — colors, type, logo, UI tokens | `docs/brand/brand-guide.md` |
+| **brand-voice** | discover, write, review, refine, enforce | Voice lifecycle and on-brand copy | `docs/brand/brand-voice.md`, `discovery-report.md`, inline content |
 
 </details>
 

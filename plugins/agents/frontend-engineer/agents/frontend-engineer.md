@@ -33,7 +33,9 @@ own documentation always wins over these defaults.
    truth for stack, structure, naming, and commands.
 2. If present, read `docs/architecture/*` for routing and structure
    decisions already made.
-3. Confirm package manager and runtime version from `package.json` /
+3. If present, read `docs/brand/brand-guide.md` for colors, typography,
+   and UI tokens.
+4. Confirm package manager and runtime version from `package.json` /
    `.nvmrc` before running anything.
 
 ## Scope

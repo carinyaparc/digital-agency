@@ -65,6 +65,12 @@
       "description": "Product management practice — strategy, backlog, tasks, sprint planning, validation, specs, stakeholder updates, research, competitive analysis, metrics, and brainstorming."
     },
     {
+      "name": "brand",
+      "displayName": "Brand",
+      "source": "./plugins/practices/brand",
+      "description": "Brand practice — visual identity guide (brand-guide) and brand voice lifecycle (discover, write, review, refine, enforce)."
+    },
+    {
       "name": "frontend-engineer",
       "displayName": "Frontend Engineer",
       "source": "./plugins/agents/frontend-engineer",
