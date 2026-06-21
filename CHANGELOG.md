@@ -12,5 +12,5 @@ Initial release of Carinya Parc Digital Agency
 
 ## Added
 
-- Functional plugins: `agency-core`, `web-development`
+- Functional plugins: `agency-core`, `engineering`
 - Agent plugins: `frontend-engineer`

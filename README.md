@@ -20,7 +20,7 @@ Each agent plugin is **self-contained** — it bundles the skills it uses, so in
 
 | Function | Agent | What it does |
 |---|---|---|
-| **Web Development** | **[Frontend Engineer](./plugins/agents/frontend-engineer)** | Builds flexible, performance sites and components, using modern web frameworks. |
+| **Engineering** | **[Frontend Engineer](./plugins/agents/frontend-engineer)** | Builds flexible, performance sites and components, using modern web frameworks. |
 
 For Managed Agent deployment — `agent.yaml`, leaf-worker subagents, steering-event examples, and per-agent security notes — see **[managed-agents/](./managed-agents)**.
 
@@ -77,7 +77,7 @@ Start with **agency-core** — it carries the shared skills and all data connect
 | Plugin | What it adds |
 |---|---|
 | **[agency-core](./plugins/functions/agency-core)** | Core digital agency skills (coming soon). Shared data connectors. |
-| **[web-development](./plugins/functions/web-development)** | Feature delivery, coding, component development, code review. |
+| **[engineering](./plugins/functions/engineering)** | Feature delivery, coding, component development, code review. |
 
 ## MCP Integrations
 
@@ -116,7 +116,7 @@ These are reference templates — they get better when you tune them to how your
 </details>
 
 <details>
-<summary><b>web-development</b> — implement, code review, create merge request</summary>
+<summary><b>engineering</b> — implement, code review, create merge request</summary>
 
 | Skill | Modes | Description | Artefact |
 | ----- | ----- | ----------- | -------- |

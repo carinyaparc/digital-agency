@@ -11,9 +11,9 @@
       "description": "Shared MCP data connectors — GitHub, Vercel, Figma, Linear, Playwright, Context7, and Next.js DevTools. Install first so agents and vertical plugins can reach your tooling."
     },
     {
-      "name": "web-development",
-      "displayName": "Web Development",
-      "source": "./plugins/functions/web-development",
+      "name": "engineering",
+      "displayName": "Engineering",
+      "source": "./plugins/functions/engineering",
       "description": "Delivery skills for frontend work — implement tasks against design.md and tasks.md, code review with acceptance-criteria and design-drift checks, and create merge requests."
     },
     {
