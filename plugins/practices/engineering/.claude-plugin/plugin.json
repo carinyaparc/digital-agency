@@ -2,7 +2,7 @@
   "name": "engineering",
   "displayName": "Engineering",
   "version": "0.1.0",
-  "description": "Engineering function: skills for implementing, reviewing, and shipping frontend work — implement tasks against design.md and tasks.md, code review with acceptance-criteria and design-drift checks, and create merge requests. Install on its own for the delivery skills, or use with the Frontend Engineer agent for a full workflow.",
+  "description": "Engineering practice: skills for implementing, reviewing, and shipping frontend work — implement tasks against design.md and tasks.md, code review with acceptance-criteria and design-drift checks, and create merge requests. Install on its own for the delivery skills, or use with the Frontend Engineer agent for a full workflow.",
   "author": {
     "name": "Carinya Parc Digital Services"
   },

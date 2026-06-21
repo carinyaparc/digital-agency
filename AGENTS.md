@@ -11,9 +11,9 @@ Cowork and Cursor plugins and Claude Managed Agent templates for digital agency 
 │   │       ├── .claude-plugin/plugin.json
 │   │       ├── .cursor-plugin/plugin.json
 │   │       ├── agents/<slug>.md     #   ← canonical system prompt (one source, two wrappers)
-│   │       └── skills/              #   ← bundled copies, synced from functions/
-│   └── functions/                   #   functional plugins — skill sources, commands, MCPs
-│       └── <function>/
+│   │       └── skills/              #   ← bundled copies, synced from practices/
+│   └── practices/                     #   practice plugins — skill sources, commands, MCPs
+│       └── <practice>/
 │           ├── .claude-plugin/plugin.json
 │           ├── .cursor-plugin/plugin.json
 │           ├── commands/
@@ -28,9 +28,9 @@ Cowork and Cursor plugins and Claude Managed Agent templates for digital agency 
 └── scripts/                         # sync-agent-skills.py (+ check.py, validate.py, orchestrate.py, deploy-managed-agent.sh — coming soon)
 ```
 
-Run `python3 scripts/sync-agent-skills.py` after editing a skill under `plugins/functions/` — it propagates bundled copies into every agent under `plugins/agents/` that uses that skill. **Edit skills in `functions/`**, not in agent bundles.
+Run `python3 scripts/sync-agent-skills.py` after editing a skill under `plugins/practices/` — it propagates bundled copies into every agent under `plugins/agents/` that uses that skill. **Edit skills in `practices/`**, not in agent bundles.
 
-`check.py` (coming soon) will lint every manifest, verify all cross-file references resolve, and fail if any `agents/<slug>/skills/` copy has drifted from its `functions/` source. A pre-commit hook and `version-bump` GitHub Action (coming soon) will patch-bump each plugin's `plugin.json` `version` so a branch ends up exactly one patch ahead of `main`.
+`check.py` (coming soon) will lint every manifest, verify all cross-file references resolve, and fail if any `agents/<slug>/skills/` copy has drifted from its `practices/` source. A pre-commit hook and `version-bump` GitHub Action (coming soon) will patch-bump each plugin's `plugin.json` `version` so a branch ends up exactly one patch ahead of `main`.
 
 ## Key Files
 
@@ -39,7 +39,7 @@ Run `python3 scripts/sync-agent-skills.py` after editing a skill under `plugins/
 - `commands/*.md`: Slash commands invoked as `/plugin:command-name`
 - `skills/*/SKILL.md`: Detailed knowledge and workflows for specific tasks
 - `*.local.md`: User-specific configuration (gitignored)
-- `plugins/functions/agency-core/.mcp.json`: Shared MCP connectors (GitHub, Vercel, Figma, Linear, Playwright, Context7, Next.js DevTools)
+- `plugins/practices/agency-core/.mcp.json`: Shared MCP connectors (GitHub, Vercel, Figma, Linear, Playwright, Context7, Next.js DevTools)
 
 ## Development Workflow
 

@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-Re-sync each agent plugin's bundled skills from the functions source.
+Re-sync each agent plugin's bundled skills from the practices source.
 
-Agent plugins under plugins/agent-plugins/<slug>/skills/<name>/ are vendored
-copies of plugins/functions/*/skills/<name>/. The function copy is the
+Agent plugins under plugins/agents/<slug>/skills/<name>/ are vendored
+copies of plugins/practices/*/skills/<name>/. The practice copy is the
 source of truth; run this after editing a skill there to propagate the change
 into every agent that bundles it.
 
@@ -15,11 +15,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 AGENTS = ROOT / "plugins" / "agents"
-FUNCTIONS = ROOT / "plugins" / "functions"
+PRACTICES = ROOT / "plugins" / "practices"
 
-# index every skill name -> source dir in functions
+# index every skill name -> source dir in practices
 src_by_name: dict[str, Path] = {}
-for sk in FUNCTIONS.glob("*/skills/*"):
+for sk in PRACTICES.glob("*/skills/*"):
     if sk.is_dir():
         src_by_name[sk.name] = sk
 
@@ -36,9 +36,9 @@ for bundled in sorted(AGENTS.glob("*/skills/*")):
     shutil.copytree(src, bundled)
     synced += 1
 
-print(f"synced {synced} bundled skill dir(s) from vertical-plugins/")
+print(f"synced {synced} bundled skill dir(s) from practices/")
 if missing:
-    print("WARN: no vertical source found for:", file=sys.stderr)
+    print("WARN: no practice source found for:", file=sys.stderr)
     for m in missing:
         print(f"  - {m}", file=sys.stderr)
     sys.exit(1)

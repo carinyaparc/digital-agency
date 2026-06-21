@@ -7,13 +7,13 @@
     {
       "name": "agency-core",
       "displayName": "Agency Core",
-      "source": "./plugins/functions/agency-core",
+      "source": "./plugins/practices/agency-core",
       "description": "Shared MCP data connectors — GitHub, Vercel, Figma, Linear, Playwright, Context7, and Next.js DevTools. Install first so agents and vertical plugins can reach your tooling."
     },
     {
       "name": "engineering",
       "displayName": "Engineering",
-      "source": "./plugins/functions/engineering",
+      "source": "./plugins/practices/engineering",
       "description": "Delivery skills for frontend work — implement tasks against design.md and tasks.md, code review with acceptance-criteria and design-drift checks, and create merge requests."
     },
     {

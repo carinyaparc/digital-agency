@@ -10,7 +10,7 @@ Each agent plugin is designed to be provider-agnostic: they can be deployed behi
 What's included
 
 - **[Agents](#agents)** — named, end-to-end workflow agents (Frontend Engineer, …). Each ships as a plugin **and** as a [Managed Agent template](./managed-agents) you deploy via `/v1/agents`.
-- **[Functional plugins](#functional-plugins)** — the underlying skills, commands, and data connectors, bundled by vertical. Install these on their own if you just want to access the skills and connectors without a full agent.
+- **[Practice plugins](#practice-plugins)** — the underlying skills, commands, and data connectors, bundled by vertical. Install these on their own if you just want to access the skills and connectors without a full agent.
 
 ## Agents
 
@@ -18,7 +18,7 @@ Each agent is named for the workflow it runs. They're starting points: install t
 
 Each agent plugin is **self-contained** — it bundles the skills it uses, so installing the agent is all you need.
 
-| Function | Agent | What it does |
+| Practice | Agent | What it does |
 |---|---|---|
 | **Engineering** | **[Frontend Engineer](./plugins/agents/frontend-engineer)** | Builds flexible, performance sites and components, using modern web frameworks. |
 
@@ -29,7 +29,7 @@ For Managed Agent deployment — `agent.yaml`, leaf-worker subagents, steering-e
 ```
 plugins/
   agents/              # Named agents — one self-contained plugin each
-  functions/           # Skill + command bundles by vertical, plus MCP connectors
+  practices/           # Skill + command bundles by vertical, plus MCP connectors
 managed-agents/        # Managed Agent cookbooks — one dir per agent
 scripts/               # deploy-managed-agent.sh · check.py · validate.py · orchestrate.py · sync-agent-skills.py
 ```
@@ -40,7 +40,7 @@ scripts/               # deploy-managed-agent.sh · check.py · validate.py · o
 
 In Cowork, open **Settings → Plugins → Add plugin** and either:
 
-- **Paste this repo URL** — `https://github.com/carinyaparc/digital-agency` — then pick the agents and functions you want from the marketplace list, or
+- **Paste this repo URL** — `https://github.com/carinyaparc/digital-agency` — then pick the agents and practices you want from the marketplace list, or
 - **Upload a zip** — zip any directory under `plugins/` (e.g. `plugins/agents/frontend-engineer/`) and drop it in.
 
 ### Claude Managed Agents
@@ -51,7 +51,7 @@ Coming soon.
 
 In Cursor, open **Settings → Plugins → Add plugin** and either:
 
-- **Paste this repo URL** — `https://github.com/carinyaparc/digital-agency` — then pick the agents and functions you want from the marketplace list, or
+- **Paste this repo URL** — `https://github.com/carinyaparc/digital-agency` — then pick the agents and practices you want from the marketplace list, or
 - **Upload a zip** — zip any directory under `plugins/` (e.g. `plugins/agents/frontend-engineer/`) and drop it in.
 
 ### Cursor Cloud Agents
@@ -63,21 +63,21 @@ Coming soon.
 | | What it is | Where it lives |
 |---|---|---|
 | **Agents** | Self-contained plugins that own a workflow end to end — system prompt plus the skills it uses. Cowork and the Managed Agent wrapper both reference the same directory. | `plugins/agents/<slug>/` |
-| **Skills** | Domain expertise, conventions, and step-by-step methods Claude draws on automatically when relevant. Authored once in the verticals; each agent bundles a synced copy of the ones it needs. | `plugins/functions/<function>/skills/` (source) · `plugins/agents/<slug>/skills/` (bundled) |
-| **Commands** | Slash actions you trigger explicitly (`/implement`). | `plugins/functions/<function>/commands/` |
-| **Connectors** | [MCP servers](https://modelcontextprotocol.io/) that wire agents to your data — source code, code reviews, hosting, observability, analytics. | `plugins/functions/agency-core/.mcp.json` |
+| **Skills** | Domain expertise, conventions, and step-by-step methods Claude draws on automatically when relevant. Authored once in the verticals; each agent bundles a synced copy of the ones it needs. | `plugins/practices/<practice>/skills/` (source) · `plugins/agents/<slug>/skills/` (bundled) |
+| **Commands** | Slash actions you trigger explicitly (`/implement`). | `plugins/practices/<practice>/commands/` |
+| **Connectors** | [MCP servers](https://modelcontextprotocol.io/) that wire agents to your data — source code, code reviews, hosting, observability, analytics. | `plugins/practices/agency-core/.mcp.json` |
 | **Managed-agent wrappers** | `agent.yaml` + depth-1 subagents + steering examples for headless deployment. | `managed-agents/<slug>/` |
 
 Everything is file-based — markdown and JSON, no build step.
 
-## Functional Plugins
+## Practice Plugins
 
 Start with **agency-core** — it carries the shared skills and all data connectors. Add verticals for the workflows you need.
 
 | Plugin | What it adds |
 |---|---|
-| **[agency-core](./plugins/functions/agency-core)** | Core digital agency skills (coming soon). Shared data connectors. |
-| **[engineering](./plugins/functions/engineering)** | Feature delivery, coding, component development, code review. |
+| **[agency-core](./plugins/practices/agency-core)** | Core digital agency skills (coming soon). Shared data connectors. |
+| **[engineering](./plugins/practices/engineering)** | Feature delivery, coding, component development, code review. |
 
 ## MCP Integrations
 
@@ -131,7 +131,7 @@ These are reference templates — they get better when you tune them to how your
 
 Everything here is markdown and YAML. Fork, edit, PR. For new content:
 
-- New skill → add it under `plugins/functions/<function>/skills/`, then run `python3 scripts/sync-agent-skills.py` to propagate to any agent that bundles it.
+- New skill → add it under `plugins/practices/<practice>/skills/`, then run `python3 scripts/sync-agent-skills.py` to propagate to any agent that bundles it.
 - New agent → `plugins/agents/<slug>/` (with `agents/<slug>.md` + `skills/`) and a matching `managed-agents/<slug>/`.
 - Run `python3 scripts/check.py` before pushing — it lints every manifest, verifies all cross-file references resolve, and fails if any bundled skill has drifted from its vertical source.
 
