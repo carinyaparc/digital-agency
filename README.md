@@ -10,7 +10,8 @@ Each agent plugin is designed to be provider-agnostic: they can be deployed behi
 What's included
 
 - **[Agents](#agents)** — named, end-to-end workflow agents (Frontend Engineer, …). Each ships as a plugin **and** as a [Managed Agent template](./managed-agents) you deploy via `/v1/agents`.
-- **[Practice plugins](#practice-plugins)** — the underlying skills, commands, and data connectors, bundled by vertical. Install these on their own if you just want to access the skills and connectors without a full agent.
+- **[Practice plugins](#practice-plugins)** — the underlying skills and commands, bundled by vertical. Install these on their own if you just want the skills without a full agent.
+- **[Connectors](#mcp-integrations)** — MCP data connectors, one provider per plugin. Install the ones your workflows need alongside agents and practices.
 
 ## Agents
 
@@ -29,7 +30,8 @@ For Managed Agent deployment — `agent.yaml`, leaf-worker subagents, steering-e
 ```
 plugins/
   agents/              # Named agents — one self-contained plugin each
-  practices/           # Skill + command bundles by vertical, plus MCP connectors
+  connectors/          # MCP connector plugins — one provider each
+  practices/           # Skill + command bundles by vertical
 managed-agents/        # Managed Agent cookbooks — one dir per agent
 scripts/               # deploy-managed-agent.sh · check.py · validate.py · orchestrate.py · sync-agent-skills.py
 ```
@@ -65,33 +67,33 @@ Coming soon.
 | **Agents** | Self-contained plugins that own a workflow end to end — system prompt plus the skills it uses. Cowork and the Managed Agent wrapper both reference the same directory. | `plugins/agents/<slug>/` |
 | **Skills** | Domain expertise, conventions, and step-by-step methods Claude draws on automatically when relevant. Authored once in the verticals; each agent bundles a synced copy of the ones it needs. | `plugins/practices/<practice>/skills/` (source) · `plugins/agents/<slug>/skills/` (bundled) |
 | **Commands** | Slash actions you trigger explicitly (`/implement`). | `plugins/practices/<practice>/commands/` |
-| **Connectors** | [MCP servers](https://modelcontextprotocol.io/) that wire agents to your data — source code, code reviews, hosting, observability, analytics. | `plugins/practices/agency-core/.mcp.json` |
+| **Connectors** | [MCP servers](https://modelcontextprotocol.io/) that wire agents to your data — source code, code reviews, hosting, observability, analytics. | `plugins/connectors/<slug>/.mcp.json` |
 | **Managed-agent wrappers** | `agent.yaml` + depth-1 subagents + steering examples for headless deployment. | `managed-agents/<slug>/` |
 
 Everything is file-based — markdown and JSON, no build step.
 
 ## Practice Plugins
 
-Start with **agency-core** — it carries the shared skills and all data connectors. Add verticals for the workflows you need.
+Install verticals for the workflows you need.
 
 | Plugin | What it adds |
 |---|---|
-| **[agency-core](./plugins/practices/agency-core)** | Core digital agency skills (coming soon). Shared data connectors. |
 | **[engineering](./plugins/practices/engineering)** | Feature delivery, coding, component development, code review. |
 
 ## MCP Integrations
 
-All connectors are centralized in the `agency-core` core plugin and shared across the rest.
+Each connector is a standalone plugin under `plugins/connectors/`. Install the providers your stack uses — agents will bundle recommended connectors later.
 
-| Provider | Type | URL / package |
-|---|---|---|
-| [GitHub](https://github.com/) | HTTP | `https://api.githubcopilot.com/mcp/` |
-| [Vercel](https://vercel.com/) | HTTP | `https://mcp.vercel.com` |
-| [Figma](https://www.figma.com/) | HTTP | `https://mcp.figma.com/mcp` |
-| [Linear](https://linear.app/) | HTTP | `https://mcp.linear.app/mcp` |
-| [Playwright](https://playwright.dev/) | npx | `@playwright/mcp@latest` |
-| [Context7](https://context7.com/) | npx | `@upstash/context7-mcp` |
-| [Next.js DevTools](https://nextjs.org/) | npx | `next-devtools-mcp@latest` |
+| Plugin | Provider | Type | URL / package |
+|---|---|---|---|
+| **[github](./plugins/connectors/github)** | [GitHub](https://github.com/) | HTTP | `https://api.githubcopilot.com/mcp/` |
+| **[gitlab](./plugins/connectors/gitlab)** | [GitLab](https://gitlab.com/) | HTTP | `https://gitlab.com/api/v4/mcp` |
+| **[vercel](./plugins/connectors/vercel)** | [Vercel](https://vercel.com/) | HTTP | `https://mcp.vercel.com` |
+| **[figma](./plugins/connectors/figma)** | [Figma](https://www.figma.com/) | HTTP | `https://mcp.figma.com/mcp` |
+| **[linear](./plugins/connectors/linear)** | [Linear](https://linear.app/) | HTTP | `https://mcp.linear.app/mcp` |
+| **[playwright](./plugins/connectors/playwright)** | [Playwright](https://playwright.dev/) | npx | `@playwright/mcp@latest` |
+| **[context7](./plugins/connectors/context7)** | [Context7](https://context7.com/) | npx | `@upstash/context7-mcp` |
+| **[next-devtools](./plugins/connectors/next-devtools)** | [Next.js DevTools](https://nextjs.org/) | npx | `next-devtools-mcp@latest` |
 
 > MCP access may require authentication, subscription, or an API key from the provider.
 
@@ -99,21 +101,13 @@ All connectors are centralized in the `agency-core` core plugin and shared acros
 
 These are reference templates — they get better when you tune them to how your firm works.
 
-- **Swap connectors** — point `.mcp.json` at your data providers and internal systems.
+- **Swap connectors** — fork a connector under `plugins/connectors/` or point `.mcp.json` at your data providers and internal systems.
 - **Add firm context** — drop your terminology, processes, and formatting standards into skill files.
 - **Bring your brand voice** — `/brand-voice` teaches agents your brand voice, writing style and structure.
 - **Adjust agent scope** — edit `agents/<slug>.md` to match how your team actually runs the workflow.
 - **Add your own** — copy the structure for workflows we haven't covered.
 
 ## Skill & Command Reference
-
-<details>
-<summary><b>agency-core</b> — coming soon</summary>
-
-| Skill | Modes | Description | Artefact |
-| ----- | ----- | ----------- | -------- |
-
-</details>
 
 <details>
 <summary><b>engineering</b> — implement, code review, create merge request</summary>

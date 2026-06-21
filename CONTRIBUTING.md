@@ -11,10 +11,13 @@ plugins/
     skills/                   # bundled copies — do not edit directly
     .claude-plugin/plugin.json
     .cursor-plugin/plugin.json
+  connectors/<slug>/          # MCP connector plugins — one provider each
+    .mcp.json                 # canonical MCP definition
+    .claude-plugin/plugin.json
+    .cursor-plugin/plugin.json
   practices/<practice>/       # skill and command sources
     skills/<name>/SKILL.md
     commands/
-    .mcp.json                 # agency-core only — shared MCP connectors
 
 managed-agents/<slug>/        # Managed Agent cookbooks (agent.yaml, subagents, …)
 
@@ -22,7 +25,7 @@ managed-agents/<slug>/        # Managed Agent cookbooks (agent.yaml, subagents, 
 .claude-plugin/marketplace.json
 ```
 
-**Source of truth:** edit skills under `plugins/practices/`, not under `plugins/agents/`. Agent plugins bundle synced copies so they stay installable on their own.
+**Source of truth:** edit skills under `plugins/practices/`, not under `plugins/agents/`. Agent plugins bundle synced copies so they stay installable on their own. Edit MCP connectors under `plugins/connectors/`, not in agent bundles.
 
 ## Changing a skill
 
@@ -54,17 +57,27 @@ managed-agents/<slug>/        # Managed Agent cookbooks (agent.yaml, subagents, 
 
 Follow existing agents (e.g. `plugins/agents/frontend-engineer/`) for structure and naming.
 
+## Adding or changing a connector
+
+1. Add `plugins/connectors/<slug>/` with:
+   - `.mcp.json` — one MCP server definition
+   - `.claude-plugin/plugin.json` and `.cursor-plugin/plugin.json` with `"mcpServers": "./.mcp.json"`
+2. Register the plugin in both marketplace manifests.
+3. Do not commit secrets or API keys — use env var placeholders where providers require auth.
+
+Follow existing connectors (e.g. `plugins/connectors/github/`) for structure and naming.
+
 ## Commands and connectors
 
 - **Commands** — slash actions live in `plugins/practices/<practice>/commands/`. Invoked as `/plugin:command-name` in Cowork.
-- **MCP connectors** — shared in `plugins/practices/agency-core/.mcp.json`. Point entries at your providers; do not commit secrets or API keys.
+- **MCP connectors** — one provider per plugin under `plugins/connectors/<slug>/.mcp.json`. Point entries at your providers; do not commit secrets or API keys.
 
 ## Pull requests
 
 - Run `python3 scripts/sync-agent-skills.py` after any skill change under `plugins/practices/`.
 - Register new plugins in both marketplace manifests.
 - Describe what workflow or agent behaviour changed and how you tested it (Cowork, Cursor, or local install).
-- Keep changes focused — one skill, agent, or practice per PR when possible.
+- Keep changes focused — one skill, agent, practice, or connector per PR when possible.
 
 ## Local config
 

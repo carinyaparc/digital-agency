@@ -5,10 +5,52 @@
   },
   "plugins": [
     {
-      "name": "agency-core",
-      "displayName": "Agency Core",
-      "source": "./plugins/practices/agency-core",
-      "description": "Shared MCP data connectors — GitHub, Vercel, Figma, Linear, Playwright, Context7, and Next.js DevTools. Install first so agents and vertical plugins can reach your tooling."
+      "name": "github",
+      "displayName": "GitHub",
+      "source": "./plugins/connectors/github",
+      "description": "GitHub MCP server for repository management — issues, pull requests, code review, and repository search."
+    },
+    {
+      "name": "gitlab",
+      "displayName": "GitLab",
+      "source": "./plugins/connectors/gitlab",
+      "description": "GitLab MCP server for repositories, merge requests, CI/CD pipelines, issues, and wikis."
+    },
+    {
+      "name": "vercel",
+      "displayName": "Vercel",
+      "source": "./plugins/connectors/vercel",
+      "description": "Vercel MCP server for deployments, projects, environment variables, and hosting workflows."
+    },
+    {
+      "name": "figma",
+      "displayName": "Figma",
+      "source": "./plugins/connectors/figma",
+      "description": "Figma MCP server for design files, components, variables, and design-to-code workflows."
+    },
+    {
+      "name": "linear",
+      "displayName": "Linear",
+      "source": "./plugins/connectors/linear",
+      "description": "Linear MCP server for issue tracking — create issues, manage projects, and update statuses."
+    },
+    {
+      "name": "playwright",
+      "displayName": "Playwright",
+      "source": "./plugins/connectors/playwright",
+      "description": "Playwright MCP server for browser automation — screenshots, form fills, and end-to-end testing."
+    },
+    {
+      "name": "context7",
+      "displayName": "Context7",
+      "source": "./plugins/connectors/context7",
+      "description": "Context7 MCP server for up-to-date library documentation and code examples from source repositories."
+    },
+    {
+      "name": "next-devtools",
+      "displayName": "Next.js DevTools",
+      "source": "./plugins/connectors/next-devtools",
+      "description": "Next.js DevTools MCP server for App Router debugging, routing, and framework introspection."
     },
     {
       "name": "engineering",

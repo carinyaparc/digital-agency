@@ -12,13 +12,17 @@ Cowork and Cursor plugins and Claude Managed Agent templates for digital agency 
 │   │       ├── .cursor-plugin/plugin.json
 │   │       ├── agents/<slug>.md     #   ← canonical system prompt (one source, two wrappers)
 │   │       └── skills/              #   ← bundled copies, synced from practices/
-│   └── practices/                     #   practice plugins — skill sources, commands, MCPs
+│   ├── connectors/                  #   MCP connector plugins — one provider each
+│   │   └── <slug>/
+│   │       ├── .claude-plugin/plugin.json
+│   │       ├── .cursor-plugin/plugin.json
+│   │       └── .mcp.json            #   ← canonical MCP definition
+│   └── practices/                   #   practice plugins — skill sources, commands
 │       └── <practice>/
 │           ├── .claude-plugin/plugin.json
 │           ├── .cursor-plugin/plugin.json
 │           ├── commands/
-│           ├── skills/
-│           └── .mcp.json            #   agency-core only — shared connectors
+│           └── skills/
 ├── managed-agents/                  #   CMA cookbooks (coming soon) — one dir per named agent
 │   └── <slug>/
 │       ├── agent.yaml               #   system + skills → ../../plugins/agents/<slug>/...
@@ -38,8 +42,8 @@ Run `python3 scripts/sync-agent-skills.py` after editing a skill under `plugins/
 - `plugin.json`: Plugin metadata — name, description, version, and component discovery settings
 - `commands/*.md`: Slash commands invoked as `/plugin:command-name`
 - `skills/*/SKILL.md`: Detailed knowledge and workflows for specific tasks
+- `plugins/connectors/<slug>/.mcp.json`: Canonical MCP connector definitions (GitHub, GitLab, Vercel, Figma, Linear, Playwright, Context7, Next.js DevTools)
 - `*.local.md`: User-specific configuration (gitignored)
-- `plugins/practices/agency-core/.mcp.json`: Shared MCP connectors (GitHub, Vercel, Figma, Linear, Playwright, Context7, Next.js DevTools)
 
 ## Development Workflow
 
