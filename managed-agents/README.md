@@ -1,3 +1,3 @@
-# Managed-agents for digital agency
+# Managed-agents for Digital Agency
 
 Coming soon.

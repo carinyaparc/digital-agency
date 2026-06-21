@@ -9,7 +9,7 @@ Each agent plugin is designed to be provider-agnostic: they can be deployed behi
 
 What's included
 
-- **[Agents](#agents)** — named, end-to-end workflow agents (Frontend Engineer, …). Each ships as a plugin **and** as a [Managed Agent template](./managed-agents) you deploy via `/v1/agents`.
+- **[Agents](#agents)** — named, end-to-end workflow agents (Frontend Engineer, …). Each ships as a plugin **and** as a [Managed Agents](./managed-agents) you deploy via `/v1/agents`.
 - **[Practice plugins](#practice-plugins)** — the underlying skills and commands, bundled by vertical. Install these on their own if you just want the skills without a full agent.
 - **[Connectors](#mcp-integrations)** — MCP data connectors, one provider per plugin. Install the ones your workflows need alongside agents and practices.
 
@@ -74,11 +74,12 @@ Everything is file-based — markdown and JSON, no build step.
 
 ## Practice Plugins
 
-Install verticals for the workflows you need.
+Install functional plugins for the workflows you need.
 
 | Plugin | What it adds |
 |---|---|
 | **[engineering](./plugins/practices/engineering)** | Architecture, epic design, implementation, code review, debugging, and technical debt. |
+| **[product-management](./plugins/practices/product-management)** | Product strategy, roadmap, backlog, tasks, sprint planning, validation, specs, stakeholder updates, research, competitive analysis, metrics, and brainstorming. |
 
 ## MCP Integrations
 
@@ -86,13 +87,13 @@ Each connector is a standalone plugin under `plugins/connectors/`. Install the p
 
 | Plugin | Provider | Type | URL / package |
 |---|---|---|---|
+| **[context7](./plugins/connectors/context7)** | [Context7](https://context7.com/) | npx | `@upstash/context7-mcp` |
+| **[figma](./plugins/connectors/figma)** | [Figma](https://www.figma.com/) | HTTP | `https://mcp.figma.com/mcp` |
 | **[github](./plugins/connectors/github)** | [GitHub](https://github.com/) | HTTP | `https://api.githubcopilot.com/mcp/` |
 | **[gitlab](./plugins/connectors/gitlab)** | [GitLab](https://gitlab.com/) | HTTP | `https://gitlab.com/api/v4/mcp` |
 | **[vercel](./plugins/connectors/vercel)** | [Vercel](https://vercel.com/) | HTTP | `https://mcp.vercel.com` |
-| **[figma](./plugins/connectors/figma)** | [Figma](https://www.figma.com/) | HTTP | `https://mcp.figma.com/mcp` |
 | **[linear](./plugins/connectors/linear)** | [Linear](https://linear.app/) | HTTP | `https://mcp.linear.app/mcp` |
 | **[playwright](./plugins/connectors/playwright)** | [Playwright](https://playwright.dev/) | npx | `@playwright/mcp@latest` |
-| **[context7](./plugins/connectors/context7)** | [Context7](https://context7.com/) | npx | `@upstash/context7-mcp` |
 | **[next-devtools](./plugins/connectors/next-devtools)** | [Next.js DevTools](https://nextjs.org/) | npx | `next-devtools-mcp@latest` |
 
 > MCP access may require authentication, subscription, or an API key from the provider.
