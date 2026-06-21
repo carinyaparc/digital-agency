@@ -1,0 +1,12 @@
+{
+  "name": "agency-core",
+  "displayName": "Agency Core",
+  "version": "0.1.0",
+  "description": "Shared MCP data connectors for agency workflows — GitHub, Vercel, Figma, Linear, Playwright, Context7, and Next.js DevTools. Install first alongside agents and vertical plugins.",
+  "author": {
+    "name": "Carinya Parc Digital Services"
+  },
+  "license": "MIT",
+  "keywords": ["agency", "mcp", "github", "vercel", "figma", "linear", "playwright"],
+  "mcpServers": "./.mcp.json"
+}

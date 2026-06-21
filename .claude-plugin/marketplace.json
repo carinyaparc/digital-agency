@@ -1,0 +1,26 @@
+{
+  "name": "carinya-digital",
+  "owner": {
+    "name": "Carinya Digital Services"
+  },
+  "plugins": [
+    {
+      "name": "agency-core",
+      "displayName": "Agency Core",
+      "source": "./plugins/functions/agency-core",
+      "description": "Shared MCP data connectors — GitHub, Vercel, Figma, Linear, Playwright, Context7, and Next.js DevTools. Install first so agents and vertical plugins can reach your tooling."
+    },
+    {
+      "name": "web-development",
+      "displayName": "Web Development",
+      "source": "./plugins/functions/web-development",
+      "description": "Delivery skills for frontend work — implement tasks against design.md and tasks.md, code review with acceptance-criteria and design-drift checks, and create merge requests."
+    },
+    {
+      "name": "frontend-engineer",
+      "displayName": "Frontend Engineer",
+      "source": "./plugins/agents/frontend-engineer",
+      "description": "Agentic frontend engineer — React/Next.js App Router, TypeScript, Tailwind, Base UI. Builds and maintains UI and client state, reading the target repo's AGENTS.md/CLAUDE.md before changing anything."
+    }
+  ]
+}
