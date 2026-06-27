@@ -90,7 +90,8 @@ infrastructure, test strategy, or QA plans.
 3. **Review** — diff or named files; apply rubric.
 4. **Report** — list blockers first, then suggestions. State the verdict
    explicitly: **approved** (no blockers) or **changes requested** (at least
-   one blocker with what must change).
+   one blocker with what must change). After the engineer addresses blockers
+   and opens the MR, hand off final gate to **principal-frontend-engineer**.
 
 ## Skills
 

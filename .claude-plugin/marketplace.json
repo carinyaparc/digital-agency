@@ -93,6 +93,12 @@
       "displayName": "Product Manager",
       "source": "./plugins/agents/product-manager",
       "description": "Agentic product manager — strategy docs, roadmaps, backlogs, sprint planning, task decomposition, specs, stakeholder updates, research synthesis, and competitive briefs. Follows docs/product/ and docs/work/{epic}/ conventions."
+    },
+    {
+      "name": "principal-frontend-engineer",
+      "displayName": "Principal Frontend Engineer",
+      "source": "./plugins/agents/principal-frontend-engineer",
+      "description": "Agentic principal frontend engineer / tech lead — final technical gate on open PRs/MRs. Validates React/Next.js architecture, security, and acceptance-criteria coverage. Maps to delivery-review crew gate."
     }
   ]
 }

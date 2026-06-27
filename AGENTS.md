@@ -50,6 +50,7 @@ Run `python3 scripts/sync-agent-skills.py` after editing a skill under `plugins/
 | `frontend-engineer` | Engineering | `implement`, `code-review`, `create-mr`, `brand-guide`, `component-scaffold` (agent-local) | Shipped; not yet operationally proven |
 | `senior-frontend-engineer` | Engineering | `code-review`, `design` | Shipped; not yet operationally proven |
 | `product-manager` | Product | All 13 product-management skills (`product`, `roadmap`, `backlog`, `tasks`, `sprint`, `validate`, `write-spec`, `stakeholder-update`, `synthesize-research`, `competitive-brief`, `metrics-review`, `product-brainstorming`, `skills-index`) | Shipped; not yet operationally proven |
+| `principal-frontend-engineer` | Engineering | `final-code-review`, `code-review`, `design`, `validate` | Shipped; not yet operationally proven |
 
 Each agent lives under `plugins/agents/<slug>/` with a canonical system prompt at `agents/<slug>.md`, bundled skills at `skills/`, and role-specific MCP in `.mcp.json`. Register new agents in both marketplace manifests.
 

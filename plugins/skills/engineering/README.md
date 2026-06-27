@@ -65,6 +65,7 @@ Full path and boundary rules: [delivery conventions](skills/references/delivery-
 | ----- | ----- | ----------- | -------- |
 | **implement** | — | Implement a task against approved design and tasks | code |
 | **code-review** | review, fix | Review a branch or PR; **fix** addresses findings without behaviour changes | code review / code |
+| **final-code-review** | — | Final gate on open MR: architecture, security, AC coverage | final review report |
 | **create-mr** | run | Merge request description from the branch | MR / PR |
 
 ### Refine
@@ -165,6 +166,7 @@ Run `python3 scripts/sync-agent-skills.py` after editing skills here — bundled
 | ----- | --------------------------------- |
 | **frontend-engineer** | `implement`, `code-review`, `create-mr` |
 | **senior-frontend-engineer** | `code-review`, `design` |
+| **principal-frontend-engineer** | `final-code-review`, `code-review`, `design` (+ `validate` from product-management) |
 
 ## License
 

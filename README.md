@@ -24,6 +24,7 @@ Each agent plugin is **self-contained** — it bundles the skills it uses, so in
 |---|---|---|
 | **Engineering** | **[Frontend Engineer](./plugins/agents/frontend-engineer)** | Builds React/Next.js UI — components, client state, styling, and page composition. Reads the target repo's conventions before changing anything. |
 | **Engineering** | **[Senior Frontend Engineer](./plugins/agents/senior-frontend-engineer)** | Peer code reviewer for React/Next.js UI changes. Reviews diffs against design docs and acceptance criteria; produces blocking/non-blocking verdicts. Read-only — does not write code. |
+| **Engineering** | **[Principal Frontend Engineer](./plugins/agents/principal-frontend-engineer)** | Final technical gate on open PRs/MRs after peer review — architecture, security, and AC coverage. Tech-lead role; maps to delivery-review crew gate. |
 | **Product** | **[Product Manager](./plugins/agents/product-manager)** | Full product delivery lifecycle — strategy, roadmap, backlog, sprint planning, task decomposition, specs, stakeholder updates, research synthesis, and epic validation. |
 
 For Managed Agent deployment — `agent.yaml`, leaf-worker subagents, steering-event examples, and per-agent security notes — see **[managed-agents/](./managed-agents)**.
