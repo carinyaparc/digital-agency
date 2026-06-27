@@ -89,8 +89,9 @@ See [CONNECTORS.md](CONNECTORS.md) for bundled MCP servers.
 
 ## Related plugins
 
-- **product-management** — strategy and comms skills; use **brand-voice enforce** for on-brand stakeholder updates
+- **product-management** / **product-manager** — strategy and comms skills; use **brand-voice enforce** for on-brand stakeholder updates
 - **engineering** / **frontend-engineer** — **brand-guide** supplies UI tokens for implementation
+- **engineering** / **senior-frontend-engineer** — reviews UI against design scope; may reference **brand-guide** tokens when checking design drift
 
 ## License
 

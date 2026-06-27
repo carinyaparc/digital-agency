@@ -9,7 +9,7 @@ Each agent plugin is designed to be provider-agnostic: they can be deployed behi
 
 What's included
 
-- **[Agents](#agents)** — named, end-to-end workflow agents (Frontend Engineer, …). Each ships as a plugin **and** as a [Managed Agents](./managed-agents) you deploy via `/v1/agents`.
+- **[Agents](#agents)** — named, end-to-end workflow agents (Frontend Engineer, Senior Frontend Engineer, Product Manager, …). Each ships as a plugin **and** as a [Managed Agents](./managed-agents) you deploy via `/v1/agents`.
 - **[Skill plugins](#skill-plugins)** — the underlying skills and commands, bundled by discipline. Install these on their own if you just want the skills without a full agent.
 - **[Connectors](#mcp-integrations)** — MCP data connectors, one provider per plugin. Install the ones your workflows need alongside agents and practices.
 
@@ -21,7 +21,9 @@ Each agent plugin is **self-contained** — it bundles the skills it uses, so in
 
 | Practice | Agent | What it does |
 |---|---|---|
-| **Engineering** | **[Frontend Engineer](./plugins/agents/frontend-engineer)** | Builds flexible, performance sites and components, using modern web frameworks. |
+| **Engineering** | **[Frontend Engineer](./plugins/agents/frontend-engineer)** | Builds React/Next.js UI — components, client state, styling, and page composition. Reads the target repo's conventions before changing anything. |
+| **Engineering** | **[Senior Frontend Engineer](./plugins/agents/senior-frontend-engineer)** | Peer code reviewer for React/Next.js UI changes. Reviews diffs against design docs and acceptance criteria; produces blocking/non-blocking verdicts. Read-only — does not write code. |
+| **Product** | **[Product Manager](./plugins/agents/product-manager)** | Full product delivery lifecycle — strategy, roadmap, backlog, sprint planning, task decomposition, specs, stakeholder updates, research synthesis, and epic validation. |
 
 For Managed Agent deployment — `agent.yaml`, leaf-worker subagents, steering-event examples, and per-agent security notes — see **[managed-agents/](./managed-agents)**.
 
@@ -44,7 +46,7 @@ scripts/               # deploy-managed-agent.sh · check.py · validate.py · o
 In Cowork, open **Settings → Plugins → Add plugin** and either:
 
 - **Paste this repo URL** — `https://github.com/carinyaparc/digital-agency` — then pick the agents and skills you want from the marketplace list, or
-- **Upload a zip** — zip any directory under `plugins/` (e.g. `plugins/agents/frontend-engineer/`) and drop it in.
+- **Upload a zip** — zip any directory under `plugins/` (e.g. `plugins/agents/product-manager/`) and drop it in.
 
 ### Claude Managed Agents
 
@@ -55,7 +57,7 @@ Coming soon.
 In Cursor, open **Settings → Plugins → Add plugin** and either:
 
 - **Paste this repo URL** — `https://github.com/carinyaparc/digital-agency` — then pick the agents and skills you want from the marketplace list, or
-- **Upload a zip** — zip any directory under `plugins/` (e.g. `plugins/agents/frontend-engineer/`) and drop it in.
+- **Upload a zip** — zip any directory under `plugins/` (e.g. `plugins/agents/product-manager/`) and drop it in.
 
 ### Cursor Cloud Agents
 

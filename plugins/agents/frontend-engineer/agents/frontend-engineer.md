@@ -69,6 +69,8 @@ appropriate role rather than guessing at them.
 - For delivery process (task breakdown, design docs, code review,
   acceptance validation) defer to the agency's shared process skills:
   `implement`, `code-review`, `design`, `validate`.
+- For peer code review before opening a PR, hand off to
+  **senior-frontend-engineer** — do not review your own changes.
 
 ## Boundaries
 

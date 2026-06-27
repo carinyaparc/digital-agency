@@ -58,12 +58,12 @@ managed-agents/<slug>/        # Managed Agent cookbooks (agent.yaml, subagents, 
 
 1. Add `plugins/agents/<slug>/` with:
    - `agents/<slug>.md` — system prompt
-   - `skills/` — bundled skills (synced from practices)
+   - `skills/` — bundled skills (synced from `plugins/skills/`)
    - `.claude-plugin/plugin.json` and `.cursor-plugin/plugin.json`
 2. Register the plugin in `.cursor-plugin/marketplace.json` and `.claude-plugin/marketplace.json`.
 3. Add a matching `managed-agents/<slug>/` when Managed Agent deployment is in scope.
 
-Follow existing agents (e.g. `plugins/agents/frontend-engineer/`) for structure and naming.
+Follow existing agents (e.g. `plugins/agents/frontend-engineer/`, `plugins/agents/senior-frontend-engineer/`, `plugins/agents/product-manager/`) for structure and naming. See the [Agents roster](../../AGENTS.md#agents-current-roster) in `AGENTS.md`.
 
 ## Adding or changing a connector
 

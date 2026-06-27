@@ -175,6 +175,14 @@ This plugin ships a bundled `.mcp.json` with common SaaS connectors. You can als
 
 See [CONNECTORS.md](CONNECTORS.md) for placeholder categories and supported integrations.
 
+## Bundled with agents
+
+Run `python3 scripts/sync-agent-skills.py` after editing skills here — bundled copies propagate to agents under `plugins/agents/` that use the same skill names:
+
+| Agent | Bundled skills from this practice |
+| ----- | --------------------------------- |
+| **product-manager** | All 13 skills in this plugin (`product`, `roadmap`, `backlog`, `tasks`, `sprint`, `validate`, `write-spec`, `stakeholder-update`, `synthesize-research`, `competitive-brief`, `metrics-review`, `product-brainstorming`, `skills-index`) |
+
 ## License
 
 MIT — (c) Carinya Parc Pty Ltd.

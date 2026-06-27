@@ -159,7 +159,12 @@ See [CONNECTORS.md](CONNECTORS.md) for placeholder categories and supported inte
 
 ## Bundled with agents
 
-Run `python3 scripts/sync-agent-skills.py` after editing skills here — bundled copies propagate to agents under `plugins/agents/` that use the same skill names (for example **frontend-engineer** bundles **implement**, **code-review**, and **create-mr**).
+Run `python3 scripts/sync-agent-skills.py` after editing skills here — bundled copies propagate to agents under `plugins/agents/` that use the same skill names:
+
+| Agent | Bundled skills from this practice |
+| ----- | --------------------------------- |
+| **frontend-engineer** | `implement`, `code-review`, `create-mr` |
+| **senior-frontend-engineer** | `code-review`, `design` |
 
 ## License
 
