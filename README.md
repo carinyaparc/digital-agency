@@ -28,6 +28,7 @@ For Managed Agent deployment — `agent.yaml`, leaf-worker subagents, steering-e
 ## Repository Layout
 
 ```
+agents/                # Shared agents (e.g. eval-grader) used across plugins
 plugins/
   agents/              # Named agents — one self-contained plugin each
   connectors/          # MCP connector plugins — one provider each
@@ -127,6 +128,29 @@ See [engineering README](./plugins/skills/engineering/README.md) for full detail
 | **docs** | review, refine | Pre-sprint or sprint-end documentation pass | review / `refine-session.md` |
 | **debug** | run | Reproduce, isolate, diagnose, and fix bugs | debug report |
 | **tech-debt** | run | Prioritize technical debt remediation | remediation plan |
+
+</details>
+
+<details>
+<summary><b>product-management</b> — product, roadmap, backlog, tasks, sprint, validate, write-spec, stakeholder-update, synthesize-research, competitive-brief, metrics-review, product-brainstorming, skills-index</summary>
+
+See [product-management README](./plugins/skills/product-management/README.md) for full detail.
+
+| Skill | Modes | Description | Artefact |
+| ----- | ----- | ----------- | -------- |
+| **product** | write, review, refine | Product strategy doc, PRD, pitch, vision, personas | `docs/product/product.md` |
+| **roadmap** | write, review, refine | Outcome-based delivery phases with exit criteria | `docs/product/roadmap.md` |
+| **backlog** | write, review, refine | Epic breakdown, Now-phase scope, delivery risks | `docs/product/backlog.md` |
+| **tasks** | write, review, refine | Gherkin acceptance criteria per epic | `docs/work/{epic}/tasks.md` |
+| **sprint** | plan, retrospective | Sprint plan and retrospective | `docs/work/sprint-{id}/plan.md` / `retrospective.md` |
+| **validate** | run | Final epic sign-off against AC and roadmap gates | validation report |
+| **write-spec** | run | Feature spec or PRD from a problem statement | feature spec |
+| **stakeholder-update** | run | Status update tailored to audience | stakeholder update |
+| **synthesize-research** | run | Themes and insights from user research | research synthesis |
+| **competitive-brief** | run | Competitive analysis brief | competitive brief |
+| **metrics-review** | run | Product metrics review with actions | metrics report |
+| **product-brainstorming** | run | Sparring partner for ideas (no deliverable) | conversation |
+| **skills-index** | run | Routes vague requests to the right skill | skill routing |
 
 </details>
 

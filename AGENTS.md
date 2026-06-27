@@ -5,6 +5,7 @@ Cowork and Cursor plugins and Claude Managed Agent templates for digital agency 
 ## Repository Structure
 
 ```
+├── agents/                          # shared agents used across plugins (e.g. eval-grader)
 ├── plugins/
 │   ├── agents/                      # named agents — one self-contained plugin each
 │   │   └── <slug>/
@@ -23,6 +24,12 @@ Cowork and Cursor plugins and Claude Managed Agent templates for digital agency 
 │           ├── .cursor-plugin/plugin.json
 │           ├── commands/
 │           └── skills/
+│               └── <name>/
+│                   ├── SKILL.md
+│                   ├── prompts/
+│                   ├── agents/      #   sub-agents for this skill
+│                   ├── evals/       #   evals.json + trigger-queries.json
+│                   └── scripts/     #   optional helper scripts
 ├── managed-agents/                  #   CMA cookbooks (coming soon) — one dir per named agent
 │   └── <slug>/
 │       ├── agent.yaml               #   system + skills → ../../plugins/agents/<slug>/...

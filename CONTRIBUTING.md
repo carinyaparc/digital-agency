@@ -5,6 +5,8 @@ Everything in this repo is markdown and JSON — no build step. Fork, edit, open
 ## Layout
 
 ```text
+agents/                       # shared agents used across plugins (e.g. eval-grader)
+
 plugins/
   agents/<slug>/              # named agents — self-contained plugins
     agents/<slug>.md          # system prompt (canonical)
@@ -16,7 +18,12 @@ plugins/
     .claude-plugin/plugin.json
     .cursor-plugin/plugin.json
   skills/<discipline>/        # skill and command sources
-    skills/<name>/SKILL.md
+    skills/<name>/
+      SKILL.md
+      prompts/
+      agents/                 # sub-agents scoped to this skill
+      evals/                  # evals.json + trigger-queries.json
+      scripts/                # optional helper scripts
     commands/
 
 managed-agents/<slug>/        # Managed Agent cookbooks (agent.yaml, subagents, …)
@@ -41,10 +48,11 @@ managed-agents/<slug>/        # Managed Agent cookbooks (agent.yaml, subagents, 
 
 ## Adding a skill
 
-1. Create `plugins/skills/<discipline>/skills/<name>/SKILL.md` (and optional `prompts/`, `agents/`, etc.).
-2. Register it in the practice plugin’s `plugin.json` if needed.
-3. Add a bundled copy to any agent that should use it under `plugins/agents/<slug>/skills/<name>/`.
-4. Run `python3 scripts/sync-agent-skills.py`.
+1. Create `plugins/skills/<discipline>/skills/<name>/SKILL.md` (and optional `prompts/`, `agents/`, `evals/`, `scripts/`).
+2. Add `evals/evals.json` and `evals/trigger-queries.json` to define test cases and routing expectations.
+3. Register it in the discipline plugin’s `plugin.json` if needed.
+4. Add a bundled copy to any agent that should use it under `plugins/agents/<slug>/skills/<name>/`.
+5. Run `python3 scripts/sync-agent-skills.py`.
 
 ## Adding or changing an agent
 
@@ -76,8 +84,9 @@ Follow existing connectors (e.g. `plugins/connectors/github/`) for structure and
 
 - Run `python3 scripts/sync-agent-skills.py` after any skill change under `plugins/skills/`.
 - Register new plugins in both marketplace manifests.
+- Add or update `evals/evals.json` and `evals/trigger-queries.json` for any new or changed skill.
 - Describe what workflow or agent behaviour changed and how you tested it (Cowork, Cursor, or local install).
-- Keep changes focused — one skill, agent, practice, or connector per PR when possible.
+- Keep changes focused — one skill, agent, discipline, or connector per PR when possible.
 
 ## Local config
 
