@@ -81,6 +81,12 @@
       "displayName": "Senior Frontend Engineer",
       "source": "./plugins/agents/senior-frontend-engineer",
       "description": "Agentic senior frontend engineer — peer code reviewer for React/Next.js, TypeScript, Tailwind, and accessibility. Reviews diffs against design docs and acceptance criteria; produces blocking/non-blocking verdicts."
+    },
+    {
+      "name": "product-manager",
+      "displayName": "Product Manager",
+      "source": "./plugins/agents/product-manager",
+      "description": "Agentic product manager — strategy docs, roadmaps, backlogs, sprint planning, task decomposition, specs, stakeholder updates, research synthesis, and competitive briefs. Follows docs/product/ and docs/work/{epic}/ conventions."
     }
   ]
 }
