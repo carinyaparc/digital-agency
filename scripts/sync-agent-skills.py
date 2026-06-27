@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
-Re-sync each agent plugin's bundled skills from the practices source.
+Re-sync each agent plugin's bundled skills from the skills source.
 
 Agent plugins under plugins/agents/<slug>/skills/<name>/ are vendored
-copies of plugins/practices/*/skills/<name>/. The practice copy is the
-source of truth; run this after editing a skill there to propagate the change
-into every agent that bundles it.
+copies of plugins/skills/<discipline>/skills/<name>/. The plugins/skills/ tree
+is the source of truth; run this after editing a skill there to propagate the
+change into every agent that bundles it.
 
 Usage: python3 scripts/sync-agent-skills.py
 """
@@ -15,7 +15,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 AGENTS = ROOT / "plugins" / "agents"
-PRACTICES = ROOT / "plugins" / "practices"
+PRACTICES = ROOT / "plugins" / "skills"
 
 # index every skill name -> source dir in practices (skip shared refs)
 src_by_name: dict[str, Path] = {}
@@ -30,7 +30,7 @@ for agent_dir in sorted(AGENTS.glob("*")):
     if not skills_dir.is_dir():
         continue
 
-    practices_used: set[Path] = set()
+    disciplines_used: set[Path] = set()
     for bundled in sorted(skills_dir.iterdir()):
         if not bundled.is_dir() or bundled.name == "references":
             continue
@@ -41,9 +41,9 @@ for agent_dir in sorted(AGENTS.glob("*")):
         shutil.rmtree(bundled)
         shutil.copytree(src, bundled)
         synced += 1
-        practices_used.add(src.parent.parent)
+        disciplines_used.add(src.parent.parent)
 
-    for practice in practices_used:
+    for practice in disciplines_used:
         refs = practice / "skills" / "references"
         if refs.is_dir():
             dest = skills_dir / "references"
@@ -52,9 +52,9 @@ for agent_dir in sorted(AGENTS.glob("*")):
             shutil.copytree(refs, dest)
             break
 
-print(f"synced {synced} bundled skill dir(s) from practices/")
+print(f"synced {synced} bundled skill dir(s) from plugins/skills/")
 if missing:
-    print("WARN: no practice source found for:", file=sys.stderr)
+    print("WARN: no skills source found for:", file=sys.stderr)
     for m in missing:
         print(f"  - {m}", file=sys.stderr)
     sys.exit(1)

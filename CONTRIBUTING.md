@@ -15,7 +15,7 @@ plugins/
     .mcp.json                 # canonical MCP definition
     .claude-plugin/plugin.json
     .cursor-plugin/plugin.json
-  practices/<practice>/       # skill and command sources
+  skills/<discipline>/        # skill and command sources
     skills/<name>/SKILL.md
     commands/
 
@@ -25,11 +25,11 @@ managed-agents/<slug>/        # Managed Agent cookbooks (agent.yaml, subagents, 
 .claude-plugin/marketplace.json
 ```
 
-**Source of truth:** edit skills under `plugins/practices/`, not under `plugins/agents/`. Agent plugins bundle synced copies so they stay installable on their own. Edit MCP connectors under `plugins/connectors/`, not in agent bundles.
+**Source of truth:** edit skills under `plugins/skills/`, not under `plugins/agents/`. Agent plugins bundle synced copies so they stay installable on their own. Edit MCP connectors under `plugins/connectors/`, not in agent bundles.
 
 ## Changing a skill
 
-1. Edit `plugins/practices/<practice>/skills/<name>/`.
+1. Edit `plugins/skills/<discipline>/skills/<name>/`.
 2. Update the skill `description` in frontmatter when routing or scope changes.
 3. Run sync to propagate into every agent that bundles it:
 
@@ -37,11 +37,11 @@ managed-agents/<slug>/        # Managed Agent cookbooks (agent.yaml, subagents, 
    python3 scripts/sync-agent-skills.py
    ```
 
-4. Test in Cowork or Cursor — install the practice plugin or an agent that bundles the skill.
+4. Test in Cowork or Cursor — install the skill plugin or an agent that bundles the skill.
 
 ## Adding a skill
 
-1. Create `plugins/practices/<practice>/skills/<name>/SKILL.md` (and optional `prompts/`, `agents/`, etc.).
+1. Create `plugins/skills/<discipline>/skills/<name>/SKILL.md` (and optional `prompts/`, `agents/`, etc.).
 2. Register it in the practice plugin’s `plugin.json` if needed.
 3. Add a bundled copy to any agent that should use it under `plugins/agents/<slug>/skills/<name>/`.
 4. Run `python3 scripts/sync-agent-skills.py`.
@@ -69,12 +69,12 @@ Follow existing connectors (e.g. `plugins/connectors/github/`) for structure and
 
 ## Commands and connectors
 
-- **Commands** — slash actions live in `plugins/practices/<practice>/commands/`. Invoked as `/plugin:command-name` in Cowork.
+- **Commands** — slash actions live in `plugins/skills/<discipline>/commands/`. Invoked as `/plugin:command-name` in Cowork.
 - **MCP connectors** — one provider per plugin under `plugins/connectors/<slug>/.mcp.json`. Point entries at your providers; do not commit secrets or API keys.
 
 ## Pull requests
 
-- Run `python3 scripts/sync-agent-skills.py` after any skill change under `plugins/practices/`.
+- Run `python3 scripts/sync-agent-skills.py` after any skill change under `plugins/skills/`.
 - Register new plugins in both marketplace manifests.
 - Describe what workflow or agent behaviour changed and how you tested it (Cowork, Cursor, or local install).
 - Keep changes focused — one skill, agent, practice, or connector per PR when possible.
