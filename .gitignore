@@ -48,7 +48,13 @@ tmp/
 *.egg-info/
 .eggs/
 
-# Personal files
+# Claude local files
+.claude/*.local.json
+.claude/*.local.md
+.claude/worktrees/
 TASKS.md
 MEMORY.md
-.claude/worktrees/
+
+# Cursor local files
+.cursor/*.local.json
+.cursor/*.local.md
