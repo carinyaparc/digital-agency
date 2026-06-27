@@ -27,6 +27,7 @@ Each agent plugin is **self-contained** — it bundles the skills it uses, so in
 | **Engineering** | **[Principal Frontend Engineer](./plugins/agents/principal-frontend-engineer)** | Final technical gate on open PRs/MRs after peer review — architecture, security, and AC coverage. Tech-lead role; maps to delivery-review crew gate. |
 | **Engineering** | **[QA Engineer](./plugins/agents/qa-engineer)** | Validates changes after CI — QA workspace deploy, automated tests, AC-driven exploratory pass, defect documentation. Maps to delivery-qa crew flow. |
 | **Product** | **[Product Manager](./plugins/agents/product-manager)** | Full product delivery lifecycle — strategy, roadmap, backlog, sprint planning, task decomposition, specs, stakeholder updates, research synthesis, and epic validation. |
+| **Operations** | **[Delivery Lead](./plugins/agents/delivery-lead)** | Cross-cutting delivery steward — routes work to agents/skills, sprint planning, backlog tracking, stakeholder updates, epic validation. Maps to crew orchestration layer. |
 
 For Managed Agent deployment — `agent.yaml`, leaf-worker subagents, steering-event examples, and per-agent security notes — see **[managed-agents/](./managed-agents)**.
 

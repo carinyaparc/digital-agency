@@ -182,6 +182,7 @@ Run `python3 scripts/sync-agent-skills.py` after editing skills here — bundled
 | Agent | Bundled skills from this practice |
 | ----- | --------------------------------- |
 | **product-manager** | All 13 skills in this plugin (`product`, `roadmap`, `backlog`, `tasks`, `sprint`, `validate`, `write-spec`, `stakeholder-update`, `synthesize-research`, `competitive-brief`, `metrics-review`, `product-brainstorming`, `skills-index`) |
+| **delivery-lead** | `skills-index`, `backlog`, `tasks`, `sprint`, `validate`, `stakeholder-update`, `metrics-review` |
 
 ## License
 
