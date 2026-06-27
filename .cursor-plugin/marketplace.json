@@ -111,6 +111,12 @@
       "displayName": "Delivery Lead",
       "source": "./plugins/agents/delivery-lead",
       "description": "Agentic delivery lead — orchestrates the delivery chain: routes to agents/skills, sprint planning, backlog tracking, stakeholder updates, and epic validation."
+    },
+    {
+      "name": "principal-architect",
+      "displayName": "Principal Architect",
+      "source": "./plugins/agents/principal-architect",
+      "description": "Agentic principal architect — system architecture (solution.md), ADRs, epic-level design, and documentation alignment. Owns the Architecture track."
     }
   ]
 }

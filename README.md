@@ -9,7 +9,7 @@ Each agent plugin is designed to be provider-agnostic: they can be deployed behi
 
 What's included
 
-- **[Agents](#agents)** — named, end-to-end workflow agents (Frontend Engineer, Senior Frontend Engineer, Product Manager, …). Each ships as a plugin **and** as a [Managed Agents](./managed-agents) you deploy via `/v1/agents`.
+- **[Agents](#agents)** — named, end-to-end workflow agents across engineering, product, and operations (Frontend Engineer through Delivery Lead). Each ships as a plugin **and** as a [Managed Agents](./managed-agents) you deploy via `/v1/agents`.
 - **[Agency Builder Hub](./agency-builder-hub)** — skill quality tooling: grade eval runs and QA skills before shipping (community skill install coming later).
 - **[Skill plugins](#skill-plugins)** — the underlying skills and commands, bundled by discipline. Install these on their own if you just want the skills without a full agent.
 - **[Connectors](#mcp-integrations)** — MCP data connectors, one provider per plugin. Install the ones your workflows need alongside agents and practices.
@@ -28,6 +28,7 @@ Each agent plugin is **self-contained** — it bundles the skills it uses, so in
 | **Engineering** | **[QA Engineer](./plugins/agents/qa-engineer)** | Validates changes after CI — QA workspace deploy, automated tests, AC-driven exploratory pass, defect documentation. Maps to delivery-qa crew flow. |
 | **Product** | **[Product Manager](./plugins/agents/product-manager)** | Full product delivery lifecycle — strategy, roadmap, backlog, sprint planning, task decomposition, specs, stakeholder updates, research synthesis, and epic validation. |
 | **Operations** | **[Delivery Lead](./plugins/agents/delivery-lead)** | Cross-cutting delivery steward — routes work to agents/skills, sprint planning, backlog tracking, stakeholder updates, epic validation. Maps to crew orchestration layer. |
+| **Engineering** | **[Principal Architect](./plugins/agents/principal-architect)** | System architecture — solution.md, ADRs, epic-level design, documentation alignment. Owns the Architecture track upstream of implementation. |
 
 For Managed Agent deployment — `agent.yaml`, leaf-worker subagents, steering-event examples, and per-agent security notes — see **[managed-agents/](./managed-agents)**.
 

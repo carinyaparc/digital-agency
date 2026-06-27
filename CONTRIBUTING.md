@@ -65,7 +65,7 @@ managed-agents/<slug>/        # Managed Agent cookbooks (agent.yaml, subagents, 
 2. Register the plugin in `.cursor-plugin/marketplace.json` and `.claude-plugin/marketplace.json`.
 3. Add a matching `managed-agents/<slug>/` when Managed Agent deployment is in scope.
 
-Follow existing agents (e.g. `plugins/agents/frontend-engineer/`, `plugins/agents/senior-frontend-engineer/`, `plugins/agents/product-manager/`) for structure and naming. See the [Agents roster](../../AGENTS.md#agents-current-roster) in `AGENTS.md`.
+Follow existing agents (e.g. `plugins/agents/frontend-engineer/`, `plugins/agents/principal-architect/`, `plugins/agents/delivery-lead/`) for structure and naming. See the [Agents roster](../../AGENTS.md#agents-current-roster) in `AGENTS.md`.
 
 ## Adding or changing a connector
 

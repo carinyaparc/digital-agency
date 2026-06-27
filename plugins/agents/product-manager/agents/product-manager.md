@@ -100,8 +100,8 @@ before producing any artefact — do not improvise the format.
 
 ## Boundaries
 
-- Do not write system architecture, data models, or API contracts — those
-  belong to the solution-architect and engineering practice.
+- Do not write system architecture, data models, or API contracts — hand off
+  to **principal-architect** and the engineering practice.
 - Do not implement code.
 - Do not commit, push, or open a PR unless explicitly asked.
 - Do not create new top-level folders or invent path conventions — follow

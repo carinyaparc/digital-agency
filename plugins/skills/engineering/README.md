@@ -178,6 +178,7 @@ Run `python3 scripts/sync-agent-skills.py` after editing skills here — bundled
 | **senior-frontend-engineer** | `code-review`, `design` |
 | **principal-frontend-engineer** | `final-code-review`, `code-review`, `design` (+ `validate` from product-management) |
 | **qa-engineer** | `deploy-qa`, `run-automated-suite`, `exploratory-pass`, `document-defects` |
+| **principal-architect** | `solution`, `adr`, `design`, `docs` |
 
 ## License
 
