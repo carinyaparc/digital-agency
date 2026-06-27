@@ -14,7 +14,8 @@ Each skill produces one clear artefact (markdown file, code change, or structure
 | ----- | -------------- | ------ |
 | Architecture | _How? Structure? Principles?_ | **solution**, **adr** |
 | Discovery | _Ready for development_ | **design** |
-| Delivery | _Definition of done_ | **implement**, **code-review**, **create-mr** |
+| Delivery | _Definition of done_ | **implement**, **code-review**, **final-code-review**, **create-mr** |
+| QA | _Validated against AC_ | **deploy-qa**, **run-automated-suite**, **exploratory-pass**, **document-defects** |
 | Refine | _What did we learn?_ | **docs** |
 | Operations | _Keep the system healthy_ | **debug**, **tech-debt** |
 
@@ -80,6 +81,15 @@ Full path and boundary rules: [delivery conventions](skills/references/delivery-
 | ----- | ----- | ----------- | -------- |
 | **debug** | run | Reproduce, isolate, diagnose, and fix bugs | debug report |
 | **tech-debt** | run | Identify, categorize, and prioritize technical debt | prioritized remediation plan |
+
+### QA
+
+| Skill | Modes | Description | Artefact |
+| ----- | ----- | ----------- | -------- |
+| **deploy-qa** | — | Checkout branch and prepare QA workspace | deploy report |
+| **run-automated-suite** | — | Run project automated test command | test report |
+| **exploratory-pass** | — | AC-driven exploratory validation | AC checklist / defects |
+| **document-defects** | — | Structure reproducible defect reports | defect report |
 
 ## Typical flow
 
@@ -167,6 +177,7 @@ Run `python3 scripts/sync-agent-skills.py` after editing skills here — bundled
 | **frontend-engineer** | `implement`, `code-review`, `create-mr` |
 | **senior-frontend-engineer** | `code-review`, `design` |
 | **principal-frontend-engineer** | `final-code-review`, `code-review`, `design` (+ `validate` from product-management) |
+| **qa-engineer** | `deploy-qa`, `run-automated-suite`, `exploratory-pass`, `document-defects` |
 
 ## License
 

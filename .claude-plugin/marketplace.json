@@ -99,6 +99,12 @@
       "displayName": "Principal Frontend Engineer",
       "source": "./plugins/agents/principal-frontend-engineer",
       "description": "Agentic principal frontend engineer / tech lead — final technical gate on open PRs/MRs. Validates React/Next.js architecture, security, and acceptance-criteria coverage. Maps to delivery-review crew gate."
+    },
+    {
+      "name": "qa-engineer",
+      "displayName": "QA Engineer",
+      "source": "./plugins/agents/qa-engineer",
+      "description": "Agentic QA engineer — validates changes after CI: deploy QA workspace, automated tests, exploratory pass, document defects. Maps to delivery-qa crew flow."
     }
   ]
 }
