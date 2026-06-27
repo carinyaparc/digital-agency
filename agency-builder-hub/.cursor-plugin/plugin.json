@@ -1,0 +1,12 @@
+{
+  "name": "agency-builder-hub",
+  "displayName": "Agency Builder Hub",
+  "version": "0.1.0",
+  "description": "Skill quality tooling for the digital agency reference — grade eval runs and evaluate skills against the Agency Skill Design Framework before shipping.",
+  "author": {
+    "name": "Carinya Parc Digital Services"
+  },
+  "license": "MIT",
+  "skills": "./skills/",
+  "agents": "./agents/"
+}

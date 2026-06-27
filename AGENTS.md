@@ -5,7 +5,7 @@ Cowork and Cursor plugins and Claude Managed Agent templates for digital agency 
 ## Repository Structure
 
 ```
-├── agents/                          # shared agents used across plugins (e.g. eval-grader)
+├── agency-builder-hub/              # skill quality hub — eval-grader, skills-qa (community install later)
 ├── plugins/
 │   ├── agents/                      # named agents — one self-contained plugin each
 │   │   └── <slug>/
@@ -52,6 +52,17 @@ Run `python3 scripts/sync-agent-skills.py` after editing a skill under `plugins/
 | `product-manager` | Product | All 13 product-management skills (`product`, `roadmap`, `backlog`, `tasks`, `sprint`, `validate`, `write-spec`, `stakeholder-update`, `synthesize-research`, `competitive-brief`, `metrics-review`, `product-brainstorming`, `skills-index`) | Shipped; not yet operationally proven |
 
 Each agent lives under `plugins/agents/<slug>/` with a canonical system prompt at `agents/<slug>.md`, bundled skills at `skills/`, and role-specific MCP in `.mcp.json`. Register new agents in both marketplace manifests.
+
+## Agency Builder Hub
+
+Meta-tooling for skill quality lives at `agency-builder-hub/` (repo root, same pattern as `strategy-builder-hub` and `legal-builder-hub`):
+
+| Component | Purpose |
+| --- | --- |
+| **eval-grader** (`agency-builder-hub/agents/eval-grader.md`) | Grade eval batch output against `evals/evals.json` |
+| **skills-qa** | Evaluate a skill against the Agency Skill Design Framework before shipping |
+
+Community registry browse, install, and auto-update are deferred until more practices are operationally proven.
 
 ## Key Files
 

@@ -10,6 +10,7 @@ Each agent plugin is designed to be provider-agnostic: they can be deployed behi
 What's included
 
 - **[Agents](#agents)** — named, end-to-end workflow agents (Frontend Engineer, Senior Frontend Engineer, Product Manager, …). Each ships as a plugin **and** as a [Managed Agents](./managed-agents) you deploy via `/v1/agents`.
+- **[Agency Builder Hub](./agency-builder-hub)** — skill quality tooling: grade eval runs and QA skills before shipping (community skill install coming later).
 - **[Skill plugins](#skill-plugins)** — the underlying skills and commands, bundled by discipline. Install these on their own if you just want the skills without a full agent.
 - **[Connectors](#mcp-integrations)** — MCP data connectors, one provider per plugin. Install the ones your workflows need alongside agents and practices.
 
@@ -30,7 +31,7 @@ For Managed Agent deployment — `agent.yaml`, leaf-worker subagents, steering-e
 ## Repository Layout
 
 ```
-agents/                # Shared agents (e.g. eval-grader) used across plugins
+agency-builder-hub/    # Skill quality hub — eval-grader, skills-qa
 plugins/
   agents/              # Named agents — one self-contained plugin each
   connectors/          # MCP connector plugins — one provider each
@@ -72,6 +73,7 @@ Coming soon.
 | **Commands** | Slash actions you trigger explicitly (`/implement`). | `plugins/skills/<discipline>/commands/` |
 | **Connectors** | [MCP servers](https://modelcontextprotocol.io/) that wire agents to your data — source code, code reviews, hosting, observability, analytics. | `plugins/connectors/<slug>/.mcp.json` |
 | **Managed-agent wrappers** | `agent.yaml` + depth-1 subagents + steering examples for headless deployment. | `managed-agents/<slug>/` |
+| **Builder hub** | Eval grading and skill design QA for maintainers. | `agency-builder-hub/` |
 
 Everything is file-based — markdown and JSON, no build step.
 
@@ -174,6 +176,7 @@ Everything here is markdown and YAML. Fork, edit, PR. For new content:
 
 - New skill → add it under `plugins/skills/<discipline>/skills/`, then run `python3 scripts/sync-agent-skills.py` to propagate to any agent that bundles it.
 - New agent → `plugins/agents/<slug>/` (with `agents/<slug>.md` + `skills/`) and a matching `managed-agents/<slug>/`.
+- Skill evals → add `evals/evals.json`; grade runs with **eval-grader** from [agency-builder-hub](./agency-builder-hub); run `/agency-builder-hub:skills-qa` before shipping.
 - Run `python3 scripts/check.py` before pushing — it lints every manifest, verifies all cross-file references resolve, and fails if any bundled skill has drifted from its vertical source.
 
 ## License

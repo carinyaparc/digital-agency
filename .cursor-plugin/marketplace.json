@@ -5,6 +5,12 @@
   },
   "plugins": [
     {
+      "name": "agency-builder-hub",
+      "displayName": "Agency Builder Hub",
+      "source": "./agency-builder-hub",
+      "description": "Skill quality tooling — grade eval runs against evals.json and evaluate skills against the Agency Skill Design Framework before shipping."
+    },
+    {
       "name": "github",
       "displayName": "GitHub",
       "source": "./plugins/connectors/github",

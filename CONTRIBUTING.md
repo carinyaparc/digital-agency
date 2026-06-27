@@ -5,7 +5,7 @@ Everything in this repo is markdown and JSON — no build step. Fork, edit, open
 ## Layout
 
 ```text
-agents/                       # shared agents used across plugins (e.g. eval-grader)
+agency-builder-hub/           # skill quality hub — eval-grader, skills-qa
 
 plugins/
   agents/<slug>/              # named agents — self-contained plugins
@@ -50,9 +50,11 @@ managed-agents/<slug>/        # Managed Agent cookbooks (agent.yaml, subagents, 
 
 1. Create `plugins/skills/<discipline>/skills/<name>/SKILL.md` (and optional `prompts/`, `agents/`, `evals/`, `scripts/`).
 2. Add `evals/evals.json` and `evals/trigger-queries.json` to define test cases and routing expectations.
-3. Register it in the discipline plugin’s `plugin.json` if needed.
-4. Add a bundled copy to any agent that should use it under `plugins/agents/<slug>/skills/<name>/`.
-5. Run `python3 scripts/sync-agent-skills.py`.
+3. Run eval batches and grade with **eval-grader** from [`agency-builder-hub/agents/eval-grader.md`](./agency-builder-hub/agents/eval-grader.md).
+4. Run `/agency-builder-hub:skills-qa` on the skill before shipping.
+5. Register it in the discipline plugin’s `plugin.json` if needed.
+6. Add a bundled copy to any agent that should use it under `plugins/agents/<slug>/skills/<name>/`.
+7. Run `python3 scripts/sync-agent-skills.py`.
 
 ## Adding or changing an agent
 
@@ -84,7 +86,7 @@ Follow existing connectors (e.g. `plugins/connectors/github/`) for structure and
 
 - Run `python3 scripts/sync-agent-skills.py` after any skill change under `plugins/skills/`.
 - Register new plugins in both marketplace manifests.
-- Add or update `evals/evals.json` and `evals/trigger-queries.json` for any new or changed skill.
+- Add or update `evals/evals.json` and `evals/trigger-queries.json` for any new or changed skill; grade with **eval-grader**; run `/agency-builder-hub:skills-qa` before merge.
 - Describe what workflow or agent behaviour changed and how you tested it (Cowork, Cursor, or local install).
 - Keep changes focused — one skill, agent, discipline, or connector per PR when possible.
 
