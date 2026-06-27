@@ -52,6 +52,7 @@ path instead of the default.
 
 - [assets/backlog.template.md](assets/backlog.template.md)
 - [examples/backlog.md](examples/backlog.md)
+- [scripts/check-epic-paths.sh](scripts/check-epic-paths.sh) — optional slug check
 
 ## Related skills
 
