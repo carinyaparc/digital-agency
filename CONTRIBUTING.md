@@ -5,7 +5,7 @@ Everything in this repo is markdown and JSON — no build step. Fork, edit, open
 ## Layout
 
 ```text
-.agents/                      # local maintainer tooling — eval-grader, skills-qa
+.agents/                      # local maintainer tooling — plugin-eval, skills-qa
 
 agents/<slug>/                # named agents — self-contained plugins
   agents/<slug>.md            # system prompt (canonical)
@@ -51,7 +51,7 @@ managed-agents/<slug>/        # Managed Agent cookbooks (agent.yaml, subagents, 
 
 1. Create `skills/<discipline>/skills/<name>/SKILL.md` (and optional `prompts/`, `agents/`, `evals/`, `scripts/`).
 2. Add `evals/evals.json` and `evals/trigger-queries.json` to define test cases and routing expectations.
-3. Run eval batches and grade with **eval-grader** from [`.agents/agents/eval-grader.md`](./.agents/agents/eval-grader.md).
+3. Run live eval sessions with **plugin-eval** from [`.agents/skills/plugin-eval/SKILL.md`](./.agents/skills/plugin-eval/SKILL.md).
 4. Run **skills-qa** from [`.agents/skills/skills-qa/SKILL.md`](./.agents/skills/skills-qa/SKILL.md) on the skill before shipping.
 5. Register it in the discipline plugin’s `plugin.json` if needed.
 6. Add a bundled copy to any agent that should use it under `agents/<slug>/skills/<name>/`.
@@ -87,7 +87,7 @@ Follow existing connectors (e.g. `connectors/github/`) for structure and naming.
 
 - Run `python3 scripts/sync-agent-skills.py` after any skill change under `skills/`.
 - Register new plugins in both marketplace manifests.
-- Add or update `evals/evals.json` and `evals/trigger-queries.json` for any new or changed skill; grade with **eval-grader**; run **skills-qa** before merge.
+- Add or update `evals/evals.json` and `evals/trigger-queries.json` for any new or changed skill; run **plugin-eval**; run **skills-qa** before merge.
 - Describe what workflow or agent behaviour changed and how you tested it (Cowork, Cursor, or local install).
 - Keep changes focused — one skill, agent, discipline, or connector per PR when possible.
 

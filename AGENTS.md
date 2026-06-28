@@ -5,7 +5,7 @@ Cowork and Cursor plugins and Claude Managed Agent templates for digital agency 
 ## Repository Structure
 
 ```
-├── .agents/                         # local maintainer tooling — eval-grader, skills-qa (not a marketplace plugin)
+├── .agents/                         # local maintainer tooling — plugin-eval, skills-qa (not a marketplace plugin)
 ├── agents/                          # named agents — one self-contained plugin each
 │   └── <slug>/
 │       ├── .claude-plugin/plugin.json
@@ -62,7 +62,7 @@ Repo-local skill quality tooling for contributors — not published as a marketp
 
 | Component | Purpose |
 | --- | --- |
-| **eval-grader** (`.agents/agents/eval-grader.md`) | Grade eval batch output against `evals/evals.json` |
+| **plugin-eval** (`.agents/skills/plugin-eval/SKILL.md`) | Live eval sessions — grade assertions in `evals/evals.json` |
 | **skills-qa** (`.agents/skills/skills-qa/SKILL.md`) | Evaluate a skill against the Agency Skill Design Framework before shipping |
 
 ## Key Files
