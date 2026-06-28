@@ -61,7 +61,7 @@ managed-agents/<slug>/        # Managed Agent cookbooks (agent.yaml, subagents, 
 
 1. Add `agents/<slug>/` with:
    - `agents/<slug>.md` — system prompt
-   - `skills/` — bundled skills (synced from `skills/`)
+   - `skills/` — bundled skills (synced from discipline plugins under `skills/<discipline>/`)
    - `.claude-plugin/plugin.json` and `.cursor-plugin/plugin.json`
 2. Register the plugin in `.cursor-plugin/marketplace.json` and `.claude-plugin/marketplace.json`.
 3. Add a matching `managed-agents/<slug>/` when Managed Agent deployment is in scope.
