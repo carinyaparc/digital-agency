@@ -38,8 +38,7 @@ For Managed Agent deployment — `agent.yaml`, leaf-worker subagents, steering-e
 .agents/               # Local maintainer tooling — eval-grader, skills-qa
 agents/                # Named agents — one self-contained plugin each
 connectors/            # MCP connector plugins — one provider each
-plugins/
-  skills/              # Skill + command bundles by discipline
+skills/                # Skill + command bundles by discipline
 managed-agents/        # Managed Agent cookbooks — one dir per agent
 scripts/               # deploy-managed-agent.sh · check.py · validate.py · orchestrate.py · sync-agent-skills.py
 ```
@@ -51,7 +50,7 @@ scripts/               # deploy-managed-agent.sh · check.py · validate.py · o
 In Cowork, open **Settings → Plugins → Add plugin** and either:
 
 - **Paste this repo URL** — `https://github.com/carinyaparc/digital-agency` — then pick the agents and skills you want from the marketplace list, or
-- **Upload a zip** — zip any agent directory (e.g. `agents/product-manager/`), any directory under `plugins/`, or any connector under `connectors/` and drop it in.
+- **Upload a zip** — zip any agent directory (e.g. `agents/product-manager/`), any directory under `skills/`, or any connector under `connectors/` and drop it in.
 
 ### Claude Managed Agents
 
@@ -62,7 +61,7 @@ Coming soon.
 In Cursor, open **Settings → Plugins → Add plugin** and either:
 
 - **Paste this repo URL** — `https://github.com/carinyaparc/digital-agency` — then pick the agents and skills you want from the marketplace list, or
-- **Upload a zip** — zip any agent directory (e.g. `agents/product-manager/`), any directory under `plugins/`, or any connector under `connectors/` and drop it in.
+- **Upload a zip** — zip any agent directory (e.g. `agents/product-manager/`), any directory under `skills/`, or any connector under `connectors/` and drop it in.
 
 ### Cursor Cloud Agents
 
@@ -73,8 +72,8 @@ Coming soon.
 | | What it is | Where it lives |
 |---|---|---|
 | **Agents** | Self-contained plugins that own a workflow end to end — system prompt plus the skills it uses. Cowork and the Managed Agent wrapper both reference the same directory. | `agents/<slug>/` |
-| **Skills** | Domain expertise, conventions, and step-by-step methods Claude draws on automatically when relevant. Authored once per discipline; each agent bundles a synced copy of the ones it needs. | `plugins/skills/<discipline>/skills/` (source) · `agents/<slug>/skills/` (bundled) |
-| **Commands** | Slash actions you trigger explicitly (`/implement`). | `plugins/skills/<discipline>/commands/` |
+| **Skills** | Domain expertise, conventions, and step-by-step methods Claude draws on automatically when relevant. Authored once per discipline; each agent bundles a synced copy of the ones it needs. | `skills/<discipline>/skills/` (source) · `agents/<slug>/skills/` (bundled) |
+| **Commands** | Slash actions you trigger explicitly (`/implement`). | `skills/<discipline>/commands/` |
 | **Connectors** | [MCP servers](https://modelcontextprotocol.io/) that wire agents to your data — source code, code reviews, hosting, observability, analytics. | `connectors/<slug>/.mcp.json` |
 | **Managed-agent wrappers** | `agent.yaml` + depth-1 subagents + steering examples for headless deployment. | `managed-agents/<slug>/` |
 | **Maintainer tooling** | Eval grading and skill design QA for contributors. | `.agents/` |
@@ -87,9 +86,9 @@ Install skill plugins for the disciplines you need.
 
 | Plugin | What it adds |
 |---|---|
-| **[engineering](./plugins/skills/engineering)** | Architecture, epic design, implementation, code review, debugging, and technical debt. |
-| **[product-management](./plugins/skills/product-management)** | Product strategy, roadmap, backlog, tasks, sprint planning, validation, specs, stakeholder updates, research, competitive analysis, metrics, and brainstorming. |
-| **[brand](./plugins/skills/brand)** | Visual brand guide and brand voice lifecycle — discover, write, review, refine, and enforce on-brand copy. |
+| **[engineering](./skills/engineering)** | Architecture, epic design, implementation, code review, debugging, and technical debt. |
+| **[product-management](./skills/product-management)** | Product strategy, roadmap, backlog, tasks, sprint planning, validation, specs, stakeholder updates, research, competitive analysis, metrics, and brainstorming. |
+| **[brand](./skills/brand)** | Visual brand guide and brand voice lifecycle — discover, write, review, refine, and enforce on-brand copy. |
 
 ## MCP Integrations
 
@@ -123,7 +122,7 @@ These are reference templates — they get better when you tune them to how your
 <details>
 <summary><b>engineering</b> — solution, adr, design, implement, code review, final-code-review, docs, debug, tech-debt, deploy-qa, run-automated-suite, exploratory-pass, document-defects</summary>
 
-See [engineering README](./plugins/skills/engineering/README.md) for full detail.
+See [engineering README](./skills/engineering/README.md) for full detail.
 
 | Skill | Modes | Description | Artefact |
 | ----- | ----- | ----------- | -------- |
@@ -142,7 +141,7 @@ See [engineering README](./plugins/skills/engineering/README.md) for full detail
 <details>
 <summary><b>product-management</b> — product, roadmap, backlog, tasks, sprint, validate, write-spec, stakeholder-update, synthesize-research, competitive-brief, metrics-review, product-brainstorming, skills-index</summary>
 
-See [product-management README](./plugins/skills/product-management/README.md) for full detail.
+See [product-management README](./skills/product-management/README.md) for full detail.
 
 | Skill | Modes | Description | Artefact |
 | ----- | ----- | ----------- | -------- |
@@ -165,7 +164,7 @@ See [product-management README](./plugins/skills/product-management/README.md) f
 <details>
 <summary><b>brand</b> — brand-guide, brand-voice</summary>
 
-See [brand README](./plugins/skills/brand/README.md) for full detail.
+See [brand README](./skills/brand/README.md) for full detail.
 
 | Skill | Modes | Description | Artefact |
 | ----- | ----- | ----------- | -------- |
@@ -178,7 +177,7 @@ See [brand README](./plugins/skills/brand/README.md) for full detail.
 
 Everything here is markdown and YAML. Fork, edit, PR. For new content:
 
-- New skill → add it under `plugins/skills/<discipline>/skills/`, then run `python3 scripts/sync-agent-skills.py` to propagate to any agent that bundles it.
+- New skill → add it under `skills/<discipline>/skills/`, then run `python3 scripts/sync-agent-skills.py` to propagate to any agent that bundles it.
 - New agent → `agents/<slug>/` (with `agents/<slug>.md` + `skills/`) and a matching `managed-agents/<slug>/`.
 - Skill evals → add `evals/evals.json`; grade runs with **eval-grader** from [.agents](./.agents); run **skills-qa** from [.agents/skills/skills-qa/SKILL.md](./.agents/skills/skills-qa/SKILL.md) before shipping.
 - Run `python3 scripts/check.py` before pushing — it lints every manifest, verifies all cross-file references resolve, and fails if any bundled skill has drifted from its vertical source.

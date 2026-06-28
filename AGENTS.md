@@ -17,19 +17,18 @@ Cowork and Cursor plugins and Claude Managed Agent templates for digital agency 
 │       ├── .claude-plugin/plugin.json
 │       ├── .cursor-plugin/plugin.json
 │       └── .mcp.json                #   ← canonical MCP definition
-├── plugins/
-│   └── skills/                      #   skill plugins — skill sources, commands
-│       └── <discipline>/
-│           ├── .claude-plugin/plugin.json
-│           ├── .cursor-plugin/plugin.json
-│           ├── commands/
-│           └── skills/
-│               └── <name>/
-│                   ├── SKILL.md
-│                   ├── prompts/
-│                   ├── agents/      #   sub-agents for this skill
-│                   ├── evals/       #   evals.json + trigger-queries.json
-│                   └── scripts/     #   optional helper scripts
+├── skills/                          #   skill plugins — skill sources, commands
+│   └── <discipline>/
+│       ├── .claude-plugin/plugin.json
+│       ├── .cursor-plugin/plugin.json
+│       ├── commands/
+│       └── skills/
+│           └── <name>/
+│               ├── SKILL.md
+│               ├── prompts/
+│               ├── agents/      #   sub-agents for this skill
+│               ├── evals/       #   evals.json + trigger-queries.json
+│               └── scripts/     #   optional helper scripts
 ├── managed-agents/                  #   CMA cookbooks (coming soon) — one dir per named agent
 │   └── <slug>/
 │       ├── agent.yaml               #   system + skills → ../../agents/<slug>/...
@@ -39,9 +38,9 @@ Cowork and Cursor plugins and Claude Managed Agent templates for digital agency 
 └── scripts/                         # sync-agent-skills.py (+ check.py, validate.py, orchestrate.py, deploy-managed-agent.sh — coming soon)
 ```
 
-Run `python3 scripts/sync-agent-skills.py` after editing a skill under `plugins/skills/` — it propagates bundled copies into every agent under `agents/` that uses that skill. **Edit skills in `plugins/skills/`**, not in agent bundles.
+Run `python3 scripts/sync-agent-skills.py` after editing a skill under `skills/` — it propagates bundled copies into every agent under `agents/` that uses that skill. **Edit skills in `skills/`**, not in agent bundles.
 
-`check.py` (coming soon) will lint every manifest, verify all cross-file references resolve, and fail if any `agents/<slug>/skills/` copy has drifted from its `plugins/skills/` source. A pre-commit hook and `version-bump` GitHub Action (coming soon) will patch-bump each plugin's `plugin.json` `version` so a branch ends up exactly one patch ahead of `main`.
+`check.py` (coming soon) will lint every manifest, verify all cross-file references resolve, and fail if any `agents/<slug>/skills/` copy has drifted from its `skills/` source. A pre-commit hook and `version-bump` GitHub Action (coming soon) will patch-bump each plugin's `plugin.json` `version` so a branch ends up exactly one patch ahead of `main`.
 
 ## Agents (current roster)
 

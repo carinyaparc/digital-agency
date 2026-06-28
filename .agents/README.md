@@ -3,7 +3,7 @@
 Repo-local agents, skills, and references for building and shipping plugins in
 this repository. Not published as a marketplace plugin — use these paths directly
 in Cowork, Cursor, or Claude Code when authoring or tuning skills under
-`plugins/skills/`.
+`skills/`.
 
 ## Tools
 

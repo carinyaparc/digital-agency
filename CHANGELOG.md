@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
+- Skill plugins moved from `plugins/skills/` to repo root `skills/`
 - MCP connector plugins moved from `plugins/connectors/` to repo root `connectors/`
 
 ### Added

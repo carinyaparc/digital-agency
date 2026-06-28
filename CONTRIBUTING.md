@@ -18,15 +18,14 @@ connectors/<slug>/            # MCP connector plugins — one provider each
   .claude-plugin/plugin.json
   .cursor-plugin/plugin.json
 
-plugins/
-  skills/<discipline>/        # skill and command sources
-    skills/<name>/
-      SKILL.md
-      prompts/
-      agents/                 # sub-agents scoped to this skill
-      evals/                  # evals.json + trigger-queries.json
-      scripts/                # optional helper scripts
-    commands/
+skills/<discipline>/        # skill and command sources
+  skills/<name>/
+    SKILL.md
+    prompts/
+    agents/                 # sub-agents scoped to this skill
+    evals/                  # evals.json + trigger-queries.json
+    scripts/                # optional helper scripts
+  commands/
 
 managed-agents/<slug>/        # Managed Agent cookbooks (agent.yaml, subagents, …)
 
@@ -34,11 +33,11 @@ managed-agents/<slug>/        # Managed Agent cookbooks (agent.yaml, subagents, 
 .claude-plugin/marketplace.json
 ```
 
-**Source of truth:** edit skills under `plugins/skills/`, not under `agents/`. Agent plugins bundle synced copies so they stay installable on their own. Edit MCP connectors under `connectors/`, not in agent bundles.
+**Source of truth:** edit skills under `skills/`, not under `agents/`. Agent plugins bundle synced copies so they stay installable on their own. Edit MCP connectors under `connectors/`, not in agent bundles.
 
 ## Changing a skill
 
-1. Edit `plugins/skills/<discipline>/skills/<name>/`.
+1. Edit `skills/<discipline>/skills/<name>/`.
 2. Update the skill `description` in frontmatter when routing or scope changes.
 3. Run sync to propagate into every agent that bundles it:
 
@@ -50,7 +49,7 @@ managed-agents/<slug>/        # Managed Agent cookbooks (agent.yaml, subagents, 
 
 ## Adding a skill
 
-1. Create `plugins/skills/<discipline>/skills/<name>/SKILL.md` (and optional `prompts/`, `agents/`, `evals/`, `scripts/`).
+1. Create `skills/<discipline>/skills/<name>/SKILL.md` (and optional `prompts/`, `agents/`, `evals/`, `scripts/`).
 2. Add `evals/evals.json` and `evals/trigger-queries.json` to define test cases and routing expectations.
 3. Run eval batches and grade with **eval-grader** from [`.agents/agents/eval-grader.md`](./.agents/agents/eval-grader.md).
 4. Run **skills-qa** from [`.agents/skills/skills-qa/SKILL.md`](./.agents/skills/skills-qa/SKILL.md) on the skill before shipping.
@@ -62,7 +61,7 @@ managed-agents/<slug>/        # Managed Agent cookbooks (agent.yaml, subagents, 
 
 1. Add `agents/<slug>/` with:
    - `agents/<slug>.md` — system prompt
-   - `skills/` — bundled skills (synced from `plugins/skills/`)
+   - `skills/` — bundled skills (synced from `skills/`)
    - `.claude-plugin/plugin.json` and `.cursor-plugin/plugin.json`
 2. Register the plugin in `.cursor-plugin/marketplace.json` and `.claude-plugin/marketplace.json`.
 3. Add a matching `managed-agents/<slug>/` when Managed Agent deployment is in scope.
@@ -81,12 +80,12 @@ Follow existing connectors (e.g. `connectors/github/`) for structure and naming.
 
 ## Commands and connectors
 
-- **Commands** — slash actions live in `plugins/skills/<discipline>/commands/`. Invoked as `/plugin:command-name` in Cowork.
+- **Commands** — slash actions live in `skills/<discipline>/commands/`. Invoked as `/plugin:command-name` in Cowork.
 - **MCP connectors** — one provider per plugin under `connectors/<slug>/.mcp.json`. Point entries at your providers; do not commit secrets or API keys.
 
 ## Pull requests
 
-- Run `python3 scripts/sync-agent-skills.py` after any skill change under `plugins/skills/`.
+- Run `python3 scripts/sync-agent-skills.py` after any skill change under `skills/`.
 - Register new plugins in both marketplace manifests.
 - Add or update `evals/evals.json` and `evals/trigger-queries.json` for any new or changed skill; grade with **eval-grader**; run **skills-qa** before merge.
 - Describe what workflow or agent behaviour changed and how you tested it (Cowork, Cursor, or local install).
