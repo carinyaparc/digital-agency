@@ -87,6 +87,17 @@ Loads `brand-voice.md` and generates on-brand copy.
 
 See [CONNECTORS.md](CONNECTORS.md) for bundled MCP servers.
 
+## Maintainers
+
+After editing skills in this plugin, run from the repo root:
+
+```bash
+python3 scripts/sync-agent-skills.py   # if bundled by an agent
+python3 scripts/validate.py
+```
+
+See [CONTRIBUTING.md](../../CONTRIBUTING.md#validation) for what `validate.py` checks.
+
 ## Related plugins
 
 - **product-management** / **product-manager** — strategy and comms skills; use **brand-voice enforce** for on-brand stakeholder updates

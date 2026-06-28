@@ -170,7 +170,14 @@ See [CONNECTORS.md](CONNECTORS.md) for placeholder categories and supported inte
 
 ## Bundled with agents
 
-Run `python3 scripts/sync-agent-skills.py` after editing skills here — bundled copies propagate to agents under `agents/` that use the same skill names:
+After editing skills here, run from the repo root:
+
+```bash
+python3 scripts/sync-agent-skills.py
+python3 scripts/validate.py
+```
+
+Bundled copies propagate to agents under `agents/` that use the same skill names:
 
 | Agent | Bundled skills from this practice |
 | ----- | --------------------------------- |

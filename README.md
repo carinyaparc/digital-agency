@@ -40,7 +40,7 @@ agents/                # Named agents — one self-contained plugin each
 connectors/            # MCP connector plugins — one provider each
 skills/                # Skill + command bundles by discipline
 managed-agents/        # Managed Agent cookbooks — one dir per agent
-scripts/               # deploy-managed-agent.sh · check.py · validate.py · orchestrate.py · sync-agent-skills.py
+scripts/               # validate.py · sync-agent-skills.py (+ orchestrate.py, deploy-managed-agent.sh — coming soon)
 ```
 
 ## Getting Started
@@ -180,7 +180,7 @@ Everything here is markdown and YAML. Fork, edit, PR. For new content:
 - New skill → add it under `skills/<discipline>/skills/`, then run `python3 scripts/sync-agent-skills.py` to propagate to any agent that bundles it.
 - New agent → `agents/<slug>/` (with `agents/<slug>.md` + `skills/`) and a matching `managed-agents/<slug>/`.
 - Skill evals → add `evals/evals.json`; run **plugin-eval** from [.agents/skills/plugin-eval/SKILL.md](./.agents/skills/plugin-eval/SKILL.md); run **skills-qa** from [.agents/skills/skills-qa/SKILL.md](./.agents/skills/skills-qa/SKILL.md) before shipping.
-- Run `python3 scripts/check.py` before pushing — it lints every manifest, verifies all cross-file references resolve, and fails if any bundled skill has drifted from its vertical source.
+- Run `python3 scripts/validate.py` before pushing — lints manifests, verifies cross-file references, checks bundled-skill drift, and validates evals schema. See [CONTRIBUTING.md](./CONTRIBUTING.md#validation).
 
 ## License
 

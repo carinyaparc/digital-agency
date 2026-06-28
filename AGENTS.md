@@ -35,12 +35,12 @@ Cowork and Cursor plugins and Claude Managed Agent templates for digital agency 
 │       ├── subagents/*.yaml         #   depth-1 leaf workers
 │       ├── steering-examples.json
 │       └── README.md                #   security tier + handoff notes
-└── scripts/                         # sync-agent-skills.py (+ check.py, validate.py, orchestrate.py, deploy-managed-agent.sh — coming soon)
+└── scripts/                         # sync-agent-skills.py, validate.py (+ orchestrate.py, deploy-managed-agent.sh — coming soon)
 ```
 
 Run `python3 scripts/sync-agent-skills.py` after editing a skill under `skills/` — it propagates bundled copies into every agent under `agents/` that uses that skill. **Edit skills in `skills/`**, not in agent bundles.
 
-`check.py` (coming soon) will lint every manifest, verify all cross-file references resolve, and fail if any `agents/<slug>/skills/` copy has drifted from its `skills/` source. A pre-commit hook and `version-bump` GitHub Action (coming soon) will patch-bump each plugin's `plugin.json` `version` so a branch ends up exactly one patch ahead of `main`.
+Run `python3 scripts/validate.py` before opening a PR — it lints marketplace and plugin manifests, checks MCP connector wiring, validates SKILL.md frontmatter, resolves markdown cross-references, detects bundled-skill drift against `skills/`, and validates `evals/` JSON schema. Use `--format json` for CI; `--strict` once skills ship full agency-framework frontmatter. A pre-commit hook and `version-bump` GitHub Action (coming soon) will patch-bump each plugin's `plugin.json` `version` so a branch ends up exactly one patch ahead of `main`.
 
 ## Agents (current roster)
 
@@ -72,10 +72,13 @@ Repo-local skill quality tooling for contributors — not published as a marketp
 - `commands/*.md`: Slash commands invoked as `/plugin:command-name`
 - `skills/*/SKILL.md`: Detailed knowledge and workflows for specific tasks
 - `connectors/<slug>/.mcp.json`: Canonical MCP connector definitions (GitHub, GitLab, Vercel, Figma, Linear, Playwright, Context7, Next.js DevTools)
+- `scripts/validate.py`: Structural validation — run before every PR
 - `*.local.md`: User-specific configuration (gitignored)
 
 ## Development Workflow
 
 1. Edit markdown files directly — changes take effect immediately
-2. Test commands with `/plugin:command-name` syntax (Cowork) or install via Cursor Settings → Plugins
-3. Skills are invoked automatically when their trigger conditions match
+2. After skill changes under `skills/`, run `python3 scripts/sync-agent-skills.py`
+3. Run `python3 scripts/validate.py` — fix errors before pushing
+4. Test commands with `/plugin:command-name` syntax (Cowork) or install via Cursor Settings → Plugins
+5. Skills are invoked automatically when their trigger conditions match
