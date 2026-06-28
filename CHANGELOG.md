@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Changed
+
+- MCP connector plugins moved from `plugins/connectors/` to repo root `connectors/`
+
 ### Added
 
 - **`.agents/`** local maintainer tooling — `eval-grader` agent, `skills-qa` skill, and Agency Skill Design Framework in `references/`

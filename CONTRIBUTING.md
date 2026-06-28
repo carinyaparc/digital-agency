@@ -13,11 +13,12 @@ agents/<slug>/                # named agents — self-contained plugins
   .claude-plugin/plugin.json
   .cursor-plugin/plugin.json
 
+connectors/<slug>/            # MCP connector plugins — one provider each
+  .mcp.json                   # canonical MCP definition
+  .claude-plugin/plugin.json
+  .cursor-plugin/plugin.json
+
 plugins/
-  connectors/<slug>/          # MCP connector plugins — one provider each
-    .mcp.json                 # canonical MCP definition
-    .claude-plugin/plugin.json
-    .cursor-plugin/plugin.json
   skills/<discipline>/        # skill and command sources
     skills/<name>/
       SKILL.md
@@ -33,7 +34,7 @@ managed-agents/<slug>/        # Managed Agent cookbooks (agent.yaml, subagents, 
 .claude-plugin/marketplace.json
 ```
 
-**Source of truth:** edit skills under `plugins/skills/`, not under `agents/`. Agent plugins bundle synced copies so they stay installable on their own. Edit MCP connectors under `plugins/connectors/`, not in agent bundles.
+**Source of truth:** edit skills under `plugins/skills/`, not under `agents/`. Agent plugins bundle synced copies so they stay installable on their own. Edit MCP connectors under `connectors/`, not in agent bundles.
 
 ## Changing a skill
 
@@ -70,18 +71,18 @@ Follow existing agents (e.g. `agents/frontend-engineer/`, `agents/principal-arch
 
 ## Adding or changing a connector
 
-1. Add `plugins/connectors/<slug>/` with:
+1. Add `connectors/<slug>/` with:
    - `.mcp.json` — one MCP server definition
    - `.claude-plugin/plugin.json` and `.cursor-plugin/plugin.json` with `"mcpServers": "./.mcp.json"`
 2. Register the plugin in both marketplace manifests.
 3. Do not commit secrets or API keys — use env var placeholders where providers require auth.
 
-Follow existing connectors (e.g. `plugins/connectors/github/`) for structure and naming.
+Follow existing connectors (e.g. `connectors/github/`) for structure and naming.
 
 ## Commands and connectors
 
 - **Commands** — slash actions live in `plugins/skills/<discipline>/commands/`. Invoked as `/plugin:command-name` in Cowork.
-- **MCP connectors** — one provider per plugin under `plugins/connectors/<slug>/.mcp.json`. Point entries at your providers; do not commit secrets or API keys.
+- **MCP connectors** — one provider per plugin under `connectors/<slug>/.mcp.json`. Point entries at your providers; do not commit secrets or API keys.
 
 ## Pull requests
 

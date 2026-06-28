@@ -12,12 +12,12 @@ Cowork and Cursor plugins and Claude Managed Agent templates for digital agency 
 │       ├── .cursor-plugin/plugin.json
 │       ├── agents/<slug>.md         #   ← canonical system prompt (one source, two wrappers)
 │       └── skills/                  #   ← bundled copies, synced from skills/
+├── connectors/                      #   MCP connector plugins — one provider each
+│   └── <slug>/
+│       ├── .claude-plugin/plugin.json
+│       ├── .cursor-plugin/plugin.json
+│       └── .mcp.json                #   ← canonical MCP definition
 ├── plugins/
-│   ├── connectors/                  #   MCP connector plugins — one provider each
-│   │   └── <slug>/
-│   │       ├── .claude-plugin/plugin.json
-│   │       ├── .cursor-plugin/plugin.json
-│   │       └── .mcp.json            #   ← canonical MCP definition
 │   └── skills/                      #   skill plugins — skill sources, commands
 │       └── <discipline>/
 │           ├── .claude-plugin/plugin.json
@@ -72,7 +72,7 @@ Repo-local skill quality tooling for contributors — not published as a marketp
 - `plugin.json`: Plugin metadata — name, description, version, and component discovery settings
 - `commands/*.md`: Slash commands invoked as `/plugin:command-name`
 - `skills/*/SKILL.md`: Detailed knowledge and workflows for specific tasks
-- `plugins/connectors/<slug>/.mcp.json`: Canonical MCP connector definitions (GitHub, GitLab, Vercel, Figma, Linear, Playwright, Context7, Next.js DevTools)
+- `connectors/<slug>/.mcp.json`: Canonical MCP connector definitions (GitHub, GitLab, Vercel, Figma, Linear, Playwright, Context7, Next.js DevTools)
 - `*.local.md`: User-specific configuration (gitignored)
 
 ## Development Workflow

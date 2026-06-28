@@ -37,8 +37,8 @@ For Managed Agent deployment — `agent.yaml`, leaf-worker subagents, steering-e
 ```
 .agents/               # Local maintainer tooling — eval-grader, skills-qa
 agents/                # Named agents — one self-contained plugin each
+connectors/            # MCP connector plugins — one provider each
 plugins/
-  connectors/          # MCP connector plugins — one provider each
   skills/              # Skill + command bundles by discipline
 managed-agents/        # Managed Agent cookbooks — one dir per agent
 scripts/               # deploy-managed-agent.sh · check.py · validate.py · orchestrate.py · sync-agent-skills.py
@@ -51,7 +51,7 @@ scripts/               # deploy-managed-agent.sh · check.py · validate.py · o
 In Cowork, open **Settings → Plugins → Add plugin** and either:
 
 - **Paste this repo URL** — `https://github.com/carinyaparc/digital-agency` — then pick the agents and skills you want from the marketplace list, or
-- **Upload a zip** — zip any agent directory (e.g. `agents/product-manager/`) or any directory under `plugins/` and drop it in.
+- **Upload a zip** — zip any agent directory (e.g. `agents/product-manager/`), any directory under `plugins/`, or any connector under `connectors/` and drop it in.
 
 ### Claude Managed Agents
 
@@ -62,7 +62,7 @@ Coming soon.
 In Cursor, open **Settings → Plugins → Add plugin** and either:
 
 - **Paste this repo URL** — `https://github.com/carinyaparc/digital-agency` — then pick the agents and skills you want from the marketplace list, or
-- **Upload a zip** — zip any agent directory (e.g. `agents/product-manager/`) or any directory under `plugins/` and drop it in.
+- **Upload a zip** — zip any agent directory (e.g. `agents/product-manager/`), any directory under `plugins/`, or any connector under `connectors/` and drop it in.
 
 ### Cursor Cloud Agents
 
@@ -75,7 +75,7 @@ Coming soon.
 | **Agents** | Self-contained plugins that own a workflow end to end — system prompt plus the skills it uses. Cowork and the Managed Agent wrapper both reference the same directory. | `agents/<slug>/` |
 | **Skills** | Domain expertise, conventions, and step-by-step methods Claude draws on automatically when relevant. Authored once per discipline; each agent bundles a synced copy of the ones it needs. | `plugins/skills/<discipline>/skills/` (source) · `agents/<slug>/skills/` (bundled) |
 | **Commands** | Slash actions you trigger explicitly (`/implement`). | `plugins/skills/<discipline>/commands/` |
-| **Connectors** | [MCP servers](https://modelcontextprotocol.io/) that wire agents to your data — source code, code reviews, hosting, observability, analytics. | `plugins/connectors/<slug>/.mcp.json` |
+| **Connectors** | [MCP servers](https://modelcontextprotocol.io/) that wire agents to your data — source code, code reviews, hosting, observability, analytics. | `connectors/<slug>/.mcp.json` |
 | **Managed-agent wrappers** | `agent.yaml` + depth-1 subagents + steering examples for headless deployment. | `managed-agents/<slug>/` |
 | **Maintainer tooling** | Eval grading and skill design QA for contributors. | `.agents/` |
 
@@ -93,18 +93,18 @@ Install skill plugins for the disciplines you need.
 
 ## MCP Integrations
 
-Each connector is a standalone plugin under `plugins/connectors/`. Install the providers your stack uses — agents will bundle recommended connectors later.
+Each connector is a standalone plugin under `connectors/`. Install the providers your stack uses — agents will bundle recommended connectors later.
 
 | Plugin | Provider | Type | URL / package |
 |---|---|---|---|
-| **[context7](./plugins/connectors/context7)** | [Context7](https://context7.com/) | npx | `@upstash/context7-mcp` |
-| **[figma](./plugins/connectors/figma)** | [Figma](https://www.figma.com/) | HTTP | `https://mcp.figma.com/mcp` |
-| **[github](./plugins/connectors/github)** | [GitHub](https://github.com/) | HTTP | `https://api.githubcopilot.com/mcp/` |
-| **[gitlab](./plugins/connectors/gitlab)** | [GitLab](https://gitlab.com/) | HTTP | `https://gitlab.com/api/v4/mcp` |
-| **[vercel](./plugins/connectors/vercel)** | [Vercel](https://vercel.com/) | HTTP | `https://mcp.vercel.com` |
-| **[linear](./plugins/connectors/linear)** | [Linear](https://linear.app/) | HTTP | `https://mcp.linear.app/mcp` |
-| **[playwright](./plugins/connectors/playwright)** | [Playwright](https://playwright.dev/) | npx | `@playwright/mcp@latest` |
-| **[next-devtools](./plugins/connectors/next-devtools)** | [Next.js DevTools](https://nextjs.org/) | npx | `next-devtools-mcp@latest` |
+| **[context7](./connectors/context7)** | [Context7](https://context7.com/) | npx | `@upstash/context7-mcp` |
+| **[figma](./connectors/figma)** | [Figma](https://www.figma.com/) | HTTP | `https://mcp.figma.com/mcp` |
+| **[github](./connectors/github)** | [GitHub](https://github.com/) | HTTP | `https://api.githubcopilot.com/mcp/` |
+| **[gitlab](./connectors/gitlab)** | [GitLab](https://gitlab.com/) | HTTP | `https://gitlab.com/api/v4/mcp` |
+| **[vercel](./connectors/vercel)** | [Vercel](https://vercel.com/) | HTTP | `https://mcp.vercel.com` |
+| **[linear](./connectors/linear)** | [Linear](https://linear.app/) | HTTP | `https://mcp.linear.app/mcp` |
+| **[playwright](./connectors/playwright)** | [Playwright](https://playwright.dev/) | npx | `@playwright/mcp@latest` |
+| **[next-devtools](./connectors/next-devtools)** | [Next.js DevTools](https://nextjs.org/) | npx | `next-devtools-mcp@latest` |
 
 > MCP access may require authentication, subscription, or an API key from the provider.
 
@@ -112,7 +112,7 @@ Each connector is a standalone plugin under `plugins/connectors/`. Install the p
 
 These are reference templates — they get better when you tune them to how your firm works.
 
-- **Swap connectors** — fork a connector under `plugins/connectors/` or point `.mcp.json` at your data providers and internal systems.
+- **Swap connectors** — fork a connector under `connectors/` or point `.mcp.json` at your data providers and internal systems.
 - **Add firm context** — drop your terminology, processes, and formatting standards into skill files.
 - **Bring your brand voice** — `/brand-voice write` and `/brand-voice enforce` teach agents your voice; `/brand-guide write` for visual identity in `docs/brand/`.
 - **Adjust agent scope** — edit `agents/<slug>.md` to match how your team actually runs the workflow.
