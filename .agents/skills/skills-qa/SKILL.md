@@ -29,7 +29,7 @@ deploying to a team. Explicit invocation only.
 - **Does not audit output correctness** for a specific client or repo — design
   and trust surface only.
 - **Does not block git commits** — verdict is advisory; the maintainer decides.
-- **Does not replace eval-grader** — run eval batches first; use this for
+- **Does not replace plugin-eval** — run live eval sessions first; use this for
   design quality.
 
 ## Preconditions
@@ -151,5 +151,5 @@ BOTTOM LINE
 
 ## Outputs
 
-After the report, suggest next steps: fix TOP FIXES, run eval-grader on
-`evals/evals.json`, or re-run **skills-qa** after edits.
+After the report, suggest next steps: fix TOP FIXES, run **plugin-eval** on
+the skill path, or re-run **skills-qa** after edits.

@@ -9,10 +9,10 @@ in Cowork, Cursor, or Claude Code when authoring or tuning skills under
 
 | Tool | Path | Purpose |
 | --- | --- | --- |
-| **eval-grader** | [`agents/eval-grader.md`](./agents/eval-grader.md) | PASS/FAIL each assertion in `evals/evals.json` with evidence; critique eval quality |
+| **plugin-eval** | [`skills/plugin-eval/SKILL.md`](./skills/plugin-eval/SKILL.md) | Live eval sessions — grade `evals/evals.json` assertions with evidence; write coverage report |
 | **skills-qa** | [`skills/skills-qa/SKILL.md`](./skills/skills-qa/SKILL.md) | Evaluate a skill against the Agency Skill Design Framework before shipping |
 
-Invoke **eval-grader** after a with-skill eval batch, or when assertions pass but
+Run **plugin-eval** before shipping skill changes, or when assertions pass but
 output quality is poor.
 
 Run **skills-qa** by following [`skills/skills-qa/SKILL.md`](./skills/skills-qa/SKILL.md)
