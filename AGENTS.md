@@ -1,11 +1,11 @@
 # Digital Agency Plugins
 
-Cowork and Cursor plugins and Claude Managed Agent templates for digital agency workflows. Each named agent ships two ways from one source.
+Claude and Cursor plugins and Managed Agent templates for digital agency workflows. Each named agent ships two ways from one source.
 
 ## Repository Structure
 
 ```
-├── .agents/                         # local maintainer tooling — plugin-eval, skills-qa, crew config (not a marketplace plugin)
+├── .agents/                         # local maintainer skills & tooling
 │   ├── config                       #   crew runtime — steering + work paths for this repo
 │   ├── steering/                    #   strategy, solution, roadmap, backlog (gitignored)
 │   ├── work/                        #   epic work artefacts (gitignored)
@@ -67,7 +67,7 @@ Repo-local skill quality tooling and crew runtime config for contributors — no
 
 | Component | Purpose |
 | --- | --- |
-| **config** (`.agents/config`) | Crew runtime — steering doc paths and work directory for this repo |
+| **config** (`.agents/config`) | Steering doc paths and work directory for this repo |
 | **steering** (`.agents/steering/`) | Strategy, solution, roadmap, backlog for this repository (gitignored) |
 | **plugin-eval** (`.agents/skills/plugin-eval/SKILL.md`) | Live eval sessions — grade assertions in `evals/evals.json` |
 | **skills-qa** (`.agents/skills/skills-qa/SKILL.md`) | Evaluate a skill against the Agency Skill Design Framework before shipping |
