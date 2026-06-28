@@ -3,7 +3,7 @@
 Re-sync each agent plugin's bundled skills from the skills source.
 
 Agent plugins under agents/<slug>/skills/<name>/ are vendored
-copies of plugins/skills/<discipline>/skills/<name>/. The plugins/skills/ tree
+copies of skills/<discipline>/skills/<name>/. The skills/ tree
 is the source of truth; run this after editing a skill there to propagate the
 change into every agent that bundles it.
 
@@ -15,7 +15,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 AGENTS = ROOT / "agents"
-PRACTICES = ROOT / "plugins" / "skills"
+PRACTICES = ROOT / "skills"
 
 # index every skill name -> source dir in practices (skip shared refs)
 src_by_name: dict[str, Path] = {}
@@ -52,7 +52,7 @@ for agent_dir in sorted(AGENTS.glob("*")):
             shutil.copytree(refs, dest)
             break
 
-print(f"synced {synced} bundled skill dir(s) from plugins/skills/")
+print(f"synced {synced} bundled skill dir(s) from skills/")
 if missing:
     print("WARN: no skills source found for:", file=sys.stderr)
     for m in missing:

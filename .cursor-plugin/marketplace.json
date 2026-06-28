@@ -55,19 +55,19 @@
     {
       "name": "engineering",
       "displayName": "Engineering",
-      "source": "./plugins/skills/engineering",
+      "source": "./skills/engineering",
       "description": "Engineering practice — architecture, epic design, implementation, code review, merge requests, docs, debugging, and technical debt."
     },
     {
       "name": "product-management",
       "displayName": "Product Management",
-      "source": "./plugins/skills/product-management",
+      "source": "./skills/product-management",
       "description": "Product management practice — strategy, backlog, tasks, sprint planning, validation, specs, stakeholder updates, research, competitive analysis, metrics, and brainstorming."
     },
     {
       "name": "brand",
       "displayName": "Brand",
-      "source": "./plugins/skills/brand",
+      "source": "./skills/brand",
       "description": "Brand practice — visual identity guide (brand-guide) and brand voice lifecycle (discover, write, review, refine, enforce)."
     },
     {

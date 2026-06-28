@@ -1,7 +1,7 @@
 # Brand conventions
 
 Canonical rules for paths, artefacts, and skill boundaries. Skills under
-`plugins/skills/brand/` should read this file when resolving paths or
+`skills/brand/` should read this file when resolving paths or
 routing near-miss requests.
 
 ## Document layout
