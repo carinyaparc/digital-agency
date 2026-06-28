@@ -4,11 +4,11 @@
 
 Plugin files use `~~category` as a placeholder for whatever tool the user connects in that category. Skills are **tool-agnostic** — they describe workflows in terms of categories rather than specific products.
 
-Standalone connector plugins in this repo live under `plugins/connectors/<slug>/.mcp.json`.
+Standalone connector plugins in this repo live under `connectors/<slug>/.mcp.json`.
 
 ## Connectors for this plugin
 
-| Category | Placeholder | Bundled in `.mcp.json` | Also in `plugins/connectors/` |
+| Category | Placeholder | Bundled in `.mcp.json` | Also in `connectors/` |
 | -------- | ----------- | ---------------------- | ------------------------------ |
 | Chat | `~~chat` | Slack | — |
 | Knowledge base | `~~knowledge base` | Notion | — |

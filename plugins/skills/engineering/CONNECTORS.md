@@ -6,11 +6,11 @@ Plugin files use `~~category` as a placeholder for whatever tool the user connec
 
 Plugins are **tool-agnostic** — they describe workflows in terms of categories (source control, CI/CD, monitoring, etc.) rather than specific products. The `.mcp.json` pre-configures specific MCP servers, but any MCP server in that category works.
 
-Standalone connector plugins in this repo live under `plugins/connectors/<slug>/.mcp.json` — install those instead of or alongside the bundled servers below.
+Standalone connector plugins in this repo live under `connectors/<slug>/.mcp.json` — install those instead of or alongside the bundled servers below.
 
 ## Connectors for this plugin
 
-| Category | Placeholder | Bundled in `.mcp.json` | Also in `plugins/connectors/` |
+| Category | Placeholder | Bundled in `.mcp.json` | Also in `connectors/` |
 | -------- | ----------- | ---------------------- | ------------------------------ |
 | Chat | `~~chat` | Slack | — |
 | Source control | `~~source control` | GitHub | GitHub, GitLab |

@@ -155,7 +155,7 @@ Every skill works without integrations:
 
 > If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](CONNECTORS.md).
 
-This plugin ships a bundled `.mcp.json` with common SaaS connectors. You can also install standalone connector plugins from `plugins/connectors/` in this repo (GitHub, GitLab, Vercel, Linear, Playwright, and others).
+This plugin ships a bundled `.mcp.json` with common SaaS connectors. You can also install standalone connector plugins from `connectors/` in this repo (GitHub, GitLab, Vercel, Linear, Playwright, and others).
 
 | Category | Examples | What it enables |
 | -------- | -------- | --------------- |
