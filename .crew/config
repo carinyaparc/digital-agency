@@ -1,0 +1,36 @@
+schema_version: 0.1.0
+
+project:
+  name: Carinya Parc Digital Agency
+  key: AGENCY
+  description: A collection of agents, skills, and connector plugins for a digital agency
+
+steering:
+  strategy: .crew/strategy.md
+  solution: .crew/solution.md
+  roadmap: .crew/roadmap.md
+
+workspace:
+  path: .
+  work: .crew/work/{epic}/
+
+source:
+  repo:
+    provider: github
+    ref: gh:carinyaparc/digital-agency
+    url: https://github.com/carinyaparc/digital-agency
+
+  issues:
+    provider: jira
+    base_url: https://carinyaparc.atlassian.net
+    key: AGENCY
+    url: https://carinyaparc.atlassian.net/browse/AGENCY
+
+  docs:
+    provider: repo
+    path: docs/
+
+  chat:
+    provider: slack
+    url: https://carinyaparc.slack.com
+    channel: '#digital-agency'
