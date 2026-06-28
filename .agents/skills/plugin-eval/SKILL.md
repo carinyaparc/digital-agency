@@ -152,8 +152,9 @@ Write results to `.notes/COVERAGE.md` (repo root or test workspace):
 
 1. **plugin-eval** — runtime behaviour against `evals/` (this skill)
 2. **skills-qa** — static design review against the Agency Skill Design Framework
+3. **`validate.py`** — structural checks (manifests, cross-refs, drift, evals schema)
 
-Run both before merging skill changes. plugin-eval first.
+Run all three before merging skill changes. plugin-eval first, then `python3 scripts/validate.py`.
 
 ## Cleanup
 

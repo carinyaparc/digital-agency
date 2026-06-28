@@ -10,8 +10,9 @@ Three things consume it:
   this framework and produces a verdict. Cite this file; do not let the two drift.
 - **`references/skill-authoring-template.md`** (when added) — starting skeleton
   for new skills, built to pass this framework by construction.
-- **`scripts/check-skill-frontmatter.py`** (when added) — mechanical validation
-  of frontmatter and required headings.
+- **`scripts/validate.py`** — mechanical validation of frontmatter, required
+  headings (with `--strict`), marketplace manifests, cross-references, bundled-skill
+  drift, and evals schema.
 
 Agency skills are **execution-oriented**: they draft or apply work against a
 definition of done, with a human review gate where stakes warrant it. The

@@ -31,6 +31,8 @@ deploying to a team. Explicit invocation only.
 - **Does not block git commits** — verdict is advisory; the maintainer decides.
 - **Does not replace plugin-eval** — run live eval sessions first; use this for
   design quality.
+- **Does not replace validate.py** — run `python3 scripts/validate.py` for
+  mechanical manifest, cross-ref, and drift checks.
 
 ## Preconditions
 
@@ -152,4 +154,4 @@ BOTTOM LINE
 ## Outputs
 
 After the report, suggest next steps: fix TOP FIXES, run **plugin-eval** on
-the skill path, or re-run **skills-qa** after edits.
+the skill path, run `python3 scripts/validate.py`, or re-run **skills-qa** after edits.
