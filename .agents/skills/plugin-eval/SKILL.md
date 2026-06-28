@@ -96,8 +96,8 @@ Skills write under repo conventions — check the paths relevant to the target s
 # Design / tasks / validate (portable docs path)
 find docs/work -name "*.md" -mmin -30 2>/dev/null
 
-# Crew steering path (this repo)
-find .crew/work -name "*.md" -mmin -30 2>/dev/null
+# Maintainer work path (this repo)
+find .agents/work -name "*.md" -mmin -30 2>/dev/null
 ```
 
 ### Trigger routing (best-effort)
@@ -164,5 +164,5 @@ When using isolated clones only:
 rm -rf ~/dev/digital-agency-testing/agency-eval-*
 ```
 
-Do not delete in-repo artefacts under `docs/work/` or `.crew/work/` — those may
+Do not delete in-repo artefacts under `docs/work/` or `.agents/work/` — those may
 be intentional eval outputs to review before revert.

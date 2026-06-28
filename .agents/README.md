@@ -9,6 +9,8 @@ in Cowork, Cursor, or Claude Code when authoring or tuning skills under
 
 | Tool | Path | Purpose |
 | --- | --- | --- |
+| **config** | [`config`](./config) | Crew runtime — steering doc paths and work directory for this repo |
+| **steering** | [`steering/`](./steering/) | Strategy, solution, roadmap, backlog (gitignored) |
 | **plugin-eval** | [`skills/plugin-eval/SKILL.md`](./skills/plugin-eval/SKILL.md) | Live eval sessions — grade `evals/evals.json` assertions with evidence; write coverage report |
 | **skills-qa** | [`skills/skills-qa/SKILL.md`](./skills/skills-qa/SKILL.md) | Evaluate a skill against the Agency Skill Design Framework before shipping |
 | **validate.py** | [`../scripts/validate.py`](../scripts/validate.py) | Structural repo validation — manifests, cross-refs, bundled-skill drift, evals schema |

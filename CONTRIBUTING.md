@@ -5,7 +5,12 @@ Everything in this repo is markdown and JSON — no build step. Fork, edit, open
 ## Layout
 
 ```text
-.agents/                      # local maintainer tooling — plugin-eval, skills-qa
+.agents/                      # local maintainer tooling — config, steering, work, plugin-eval, skills-qa
+  config                      # crew runtime — steering + work paths for this repo
+  steering/                   # strategy, solution, roadmap, backlog (gitignored)
+  work/                       # epic work artefacts (gitignored)
+  skills/                     # plugin-eval, skills-qa
+  references/                 # agency skill design framework
 
 agents/<slug>/                # named agents — self-contained plugins
   agents/<slug>.md            # system prompt (canonical)

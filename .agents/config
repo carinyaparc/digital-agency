@@ -6,14 +6,14 @@ project:
   description: A collection of agents, skills, and connector plugins for a digital agency
 
 steering:
-  strategy: .crew/steering/strategy.md
-  solution: .crew/steering/solution.md
-  roadmap: .crew/steering/roadmap.md
-  backlog: .crew/steering/backlog.md
+  strategy: .agents/steering/strategy.md
+  solution: .agents/steering/solution.md
+  roadmap: .agents/steering/roadmap.md
+  backlog: .agents/steering/backlog.md
 
 workspace:
   path: .
-  work: .crew/work/{epic}/
+  work: .agents/work/{epic}/
 
 source:
   repo:

@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
+- **`.crew/` consolidated into `.agents/`** — crew config, steering, and work paths moved under `.agents/`; `.crew/` removed
 - **AGENCY03 complete** — repo-local maintainer tooling in `.agents/` (`plugin-eval`, `skills-qa`, skill-design framework); `agency-builder-hub` removed from marketplace
 - **plugin-eval** replaces **eval-grader** — live eval sessions via `.agents/skills/plugin-eval/SKILL.md`
 - Skill plugins moved from `plugins/skills/` to repo root `skills/`

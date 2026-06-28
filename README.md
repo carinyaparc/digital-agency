@@ -10,7 +10,7 @@ Each agent plugin is designed to be provider-agnostic: they can be deployed behi
 What's included
 
 - **[Agents](#agents)** — named, end-to-end workflow agents across engineering, product, and operations (Frontend Engineer through Delivery Lead). Each ships as a plugin **and** as a [Managed Agents](./managed-agents) you deploy via `/v1/agents`.
-- **[Local maintainer tooling](./.agents)** — skill quality tooling for contributors: grade eval runs and QA skills before shipping (not a marketplace plugin).
+- **[Local maintainer tooling](./.agents)** — crew config, steering, and skill quality tooling for contributors: grade eval runs and QA skills before shipping (not a marketplace plugin).
 - **[Skill plugins](#skill-plugins)** — the underlying skills and commands, bundled by discipline. Install these on their own if you just want the skills without a full agent.
 - **[Connectors](#mcp-integrations)** — MCP data connectors, one provider per plugin. Install the ones your workflows need alongside agents and practices.
 
@@ -35,7 +35,7 @@ For Managed Agent deployment — `agent.yaml`, leaf-worker subagents, steering-e
 ## Repository Layout
 
 ```
-.agents/               # Local maintainer tooling — plugin-eval, skills-qa
+.agents/               # Local maintainer tooling — config, steering, work, plugin-eval, skills-qa
 agents/                # Named agents — one self-contained plugin each
 connectors/            # MCP connector plugins — one provider each
 skills/                # Skill + command bundles by discipline
@@ -76,7 +76,7 @@ Coming soon.
 | **Commands** | Slash actions you trigger explicitly (`/implement`). | `skills/<discipline>/commands/` |
 | **Connectors** | [MCP servers](https://modelcontextprotocol.io/) that wire agents to your data — source code, code reviews, hosting, observability, analytics. | `connectors/<slug>/.mcp.json` |
 | **Managed-agent wrappers** | `agent.yaml` + depth-1 subagents + steering examples for headless deployment. | `managed-agents/<slug>/` |
-| **Maintainer tooling** | Eval grading and skill design QA for contributors. | `.agents/` |
+| **Maintainer tooling** | Crew config, steering, eval grading, and skill design QA for contributors. | `.agents/` |
 
 Everything is file-based — markdown and JSON, no build step.
 
