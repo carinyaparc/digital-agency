@@ -2,21 +2,22 @@
 type: Design
 mode: walking-skeleton
 epic: plugin-eval
-epic_id: AGENCY15
-version: '0.2'
+epic_id: AGENCY03
+version: '0.3'
 owner: Jonathan D'Addia
-status: Draft
-last_updated: 2026-06-28
+status: Shipped
+last_updated: 2026-06-29
 related:
   - .crew/steering/solution.md
   - .crew/steering/backlog.md
-  - .crew/work/plugin-eval/tasks.md
+  - .crew/work/repo-tooling/README.md
 ---
 
-# Design -- Plugin Eval (AGENCY15)
+# Design -- Plugin Eval (AGENCY03)
 
-Design for epic AGENCY15 at `.crew/work/plugin-eval/`. Architecture-wide patterns
-are authoritative in [`.crew/steering/solution.md`](../../steering/solution.md).
+Design for plugin-eval work at `.crew/work/plugin-eval/`, delivered as part of
+**AGENCY03** (repo-local tooling migration). Architecture-wide patterns are
+authoritative in [`.crew/steering/solution.md`](../../steering/solution.md).
 
 **Intent.** Replace **eval-grader** with a single repo-local skill —
 `.agents/skills/plugin-eval/SKILL.md` — that runs live eval sessions and grades
@@ -30,7 +31,8 @@ ad hoc by Bash at run time). Vercel proves that works. This repo already has
 per-skill `evals/evals.json` and `trigger-queries.json` — those are the data;
 plugin-eval is the procedure.
 
-Completes the eval toolchain under AGENCY03 (repo-local tooling migration).
+**Status.** Shipped 2026-06-28 as AGENCY03 closure work. Closure summary:
+[`.crew/work/repo-tooling/README.md`](../repo-tooling/README.md).
 
 ## 1. The slice
 
@@ -55,6 +57,7 @@ that do not yet ship an `evals/` folder.
 | `skills/**/evals/evals.json` | KEEP | Existing per-skill eval definitions — no schema change |
 | `skills/**/evals/trigger-queries.json` | KEEP | Existing trigger expectations |
 | `agents/*/skills/validate/SKILL.md` | EVOLVE | Citation path (via `sync-agent-skills.py`) |
+| `scripts/validate.py` | KEEP | Structural repo validation — see `CONTRIBUTING.md#validation` |
 
 **Not shipped:** `assets/`, `scenarios/catalog.json`, fixture workspaces in
 git, shell scripts, marketplace entries.
@@ -63,26 +66,25 @@ git, shell scripts, marketplace entries.
 
 ### 3.1 End-to-end path
 
-- [ ] `.agents/skills/plugin-eval/SKILL.md` exists with DO NOT rules, Quick Start,
+- [x] `.agents/skills/plugin-eval/SKILL.md` exists with DO NOT rules, Quick Start,
   monitor/grade instructions, and Coverage Report section (vercel shape).
 - [ ] Live session run against one skill with `evals/` completes; `.notes/COVERAGE.md`
-  has assertion matrix with ≥1 PASS and quoted evidence.
+  has assertion matrix with ≥1 PASS and quoted evidence. *(Manual proof — maintainer-run.)*
 
 ### 3.2 Workspace model
 
-- [ ] SKILL.md documents one of: run **in this repo** (`.agents/` + `skills/` on
-  disk), or timestamped clone under `~/dev/digital-agency-testing/` — no
-  version-controlled fixture tree.
+- [x] SKILL.md documents in-repo execution (preferred) and optional timestamped
+  clone under `~/dev/digital-agency-testing/` — no version-controlled fixture tree.
 
 ### 3.3 Deprecation
 
-- [ ] `eval-grader.md` removed; grep finds no live refs to `eval-grader` or
-  `agency-builder-hub/agents/eval-grader` outside CHANGELOG.
+- [x] `eval-grader.md` removed; grep finds no live refs to `eval-grader` or
+  `agency-builder-hub/agents/eval-grader` outside CHANGELOG and this design doc.
 
 ### 3.4 Quality gates
 
-- [ ] skills-qa still documented as complementary (design review, not runtime eval).
-- [ ] No new files under `.agents/skills/plugin-eval/` besides `SKILL.md`.
+- [x] skills-qa still documented as complementary (design review, not runtime eval).
+- [x] No new files under `.agents/skills/plugin-eval/` besides `SKILL.md`.
 
 ## 4. What this epic did NOT deliver
 
@@ -100,9 +102,9 @@ Everything below is **sections inside the single file**, not separate artefacts.
 | Section | Purpose |
 | ------- | ------- |
 | **DO NOT** | No `--print`, no skip-permissions, no `/tmp/`, no eval scripts, timestamp slugs |
-| **Quick Start** | `mkdir` / clone repo, load `.agents/`, WezTerm spawn, find debug log |
+| **Quick Start** | In-repo WezTerm spawn; optional isolated clone; find debug log |
 | **What to monitor** | Debug log greps; files written under `.crew/work/` or `docs/work/` per skill |
-| **Grading** | Read `evals/evals.json`; PASS/FAIL table with quoted evidence; eval-quality notes (from eval-grader) |
+| **Grading** | Read `evals/evals.json`; PASS/FAIL table with quoted evidence; eval-quality notes |
 | **Trigger queries** | Optional: note `trigger-queries.json` checks where host signal exists |
 | **Skills with evals** | Inline markdown table — design, tasks, backlog, validate paths |
 | **Coverage Report** | `.notes/COVERAGE.md` outline: session index, assertion matrix, issues |
@@ -115,7 +117,6 @@ Grading reads skill sources under `skills/`, not bundled copies under `agents/`.
 
 **Stable on close:** plugin-eval SKILL.md as the sole eval entry point.
 
-**Next:** `tasks write plugin-eval`; add AGENCY15 to backlog when tracking formally.
-
-**Open question:** Run evals in-repo vs isolated clone — pick one in SKILL.md
-Quick Start (recommend in-repo first; this catalogue *is* the workspace).
+**Remaining manual proof:** Run plugin-eval against one skill with `evals/` and
+archive `.notes/COVERAGE.md` before declaring the eval toolchain operationally
+exercised.
