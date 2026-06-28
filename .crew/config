@@ -6,9 +6,10 @@ project:
   description: A collection of agents, skills, and connector plugins for a digital agency
 
 steering:
-  strategy: .crew/strategy.md
-  solution: .crew/solution.md
-  roadmap: .crew/roadmap.md
+  strategy: .crew/steering/strategy.md
+  solution: .crew/steering/solution.md
+  roadmap: .crew/steering/roadmap.md
+  backlog: .crew/steering/backlog.md
 
 workspace:
   path: .

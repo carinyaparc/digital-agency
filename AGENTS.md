@@ -5,14 +5,14 @@ Cowork and Cursor plugins and Claude Managed Agent templates for digital agency 
 ## Repository Structure
 
 ```
-├── agency-builder-hub/              # skill quality hub — eval-grader, skills-qa (community install later)
+├── .agents/                         # local maintainer tooling — eval-grader, skills-qa (not a marketplace plugin)
+├── agents/                          # named agents — one self-contained plugin each
+│   └── <slug>/
+│       ├── .claude-plugin/plugin.json
+│       ├── .cursor-plugin/plugin.json
+│       ├── agents/<slug>.md         #   ← canonical system prompt (one source, two wrappers)
+│       └── skills/                  #   ← bundled copies, synced from skills/
 ├── plugins/
-│   ├── agents/                      # named agents — one self-contained plugin each
-│   │   └── <slug>/
-│   │       ├── .claude-plugin/plugin.json
-│   │       ├── .cursor-plugin/plugin.json
-│   │       ├── agents/<slug>.md     #   ← canonical system prompt (one source, two wrappers)
-│   │       └── skills/              #   ← bundled copies, synced from skills/
 │   ├── connectors/                  #   MCP connector plugins — one provider each
 │   │   └── <slug>/
 │   │       ├── .claude-plugin/plugin.json
@@ -32,14 +32,14 @@ Cowork and Cursor plugins and Claude Managed Agent templates for digital agency 
 │                   └── scripts/     #   optional helper scripts
 ├── managed-agents/                  #   CMA cookbooks (coming soon) — one dir per named agent
 │   └── <slug>/
-│       ├── agent.yaml               #   system + skills → ../../plugins/agents/<slug>/...
+│       ├── agent.yaml               #   system + skills → ../../agents/<slug>/...
 │       ├── subagents/*.yaml         #   depth-1 leaf workers
 │       ├── steering-examples.json
 │       └── README.md                #   security tier + handoff notes
 └── scripts/                         # sync-agent-skills.py (+ check.py, validate.py, orchestrate.py, deploy-managed-agent.sh — coming soon)
 ```
 
-Run `python3 scripts/sync-agent-skills.py` after editing a skill under `plugins/skills/` — it propagates bundled copies into every agent under `plugins/agents/` that uses that skill. **Edit skills in `plugins/skills/`**, not in agent bundles.
+Run `python3 scripts/sync-agent-skills.py` after editing a skill under `plugins/skills/` — it propagates bundled copies into every agent under `agents/` that uses that skill. **Edit skills in `plugins/skills/`**, not in agent bundles.
 
 `check.py` (coming soon) will lint every manifest, verify all cross-file references resolve, and fail if any `agents/<slug>/skills/` copy has drifted from its `plugins/skills/` source. A pre-commit hook and `version-bump` GitHub Action (coming soon) will patch-bump each plugin's `plugin.json` `version` so a branch ends up exactly one patch ahead of `main`.
 
@@ -55,18 +55,16 @@ Run `python3 scripts/sync-agent-skills.py` after editing a skill under `plugins/
 | `delivery-lead` | Operations (cross-cutting) | `skills-index`, `backlog`, `tasks`, `sprint`, `validate`, `stakeholder-update`, `metrics-review` | Shipped; not yet operationally proven |
 | `principal-architect` | Engineering (Architecture) | `solution`, `adr`, `design`, `docs` | Shipped; not yet operationally proven |
 
-Each agent lives under `plugins/agents/<slug>/` with a canonical system prompt at `agents/<slug>.md`, bundled skills at `skills/`, and role-specific MCP in `.mcp.json`. Register new agents in both marketplace manifests.
+Each agent lives under `agents/<slug>/` with a canonical system prompt at `agents/<slug>.md`, bundled skills at `skills/`, and role-specific MCP in `.mcp.json`. Register new agents in both marketplace manifests.
 
-## Agency Builder Hub
+## Local maintainer tooling (`.agents/`)
 
-Meta-tooling for skill quality lives at `agency-builder-hub/` (repo root, same pattern as `strategy-builder-hub` and `legal-builder-hub`):
+Repo-local skill quality tooling for contributors — not published as a marketplace plugin:
 
 | Component | Purpose |
 | --- | --- |
-| **eval-grader** (`agency-builder-hub/agents/eval-grader.md`) | Grade eval batch output against `evals/evals.json` |
-| **skills-qa** | Evaluate a skill against the Agency Skill Design Framework before shipping |
-
-Community registry browse, install, and auto-update are deferred until more practices are operationally proven.
+| **eval-grader** (`.agents/agents/eval-grader.md`) | Grade eval batch output against `evals/evals.json` |
+| **skills-qa** (`.agents/skills/skills-qa/SKILL.md`) | Evaluate a skill against the Agency Skill Design Framework before shipping |
 
 ## Key Files
 

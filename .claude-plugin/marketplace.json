@@ -5,12 +5,6 @@
   },
   "plugins": [
     {
-      "name": "agency-builder-hub",
-      "displayName": "Agency Builder Hub",
-      "source": "./agency-builder-hub",
-      "description": "Skill quality tooling — grade eval runs against evals.json and evaluate skills against the Agency Skill Design Framework before shipping."
-    },
-    {
       "name": "github",
       "displayName": "GitHub",
       "source": "./plugins/connectors/github",
@@ -79,43 +73,43 @@
     {
       "name": "frontend-engineer",
       "displayName": "Frontend Engineer",
-      "source": "./plugins/agents/frontend-engineer",
+      "source": "./agents/frontend-engineer",
       "description": "Agentic frontend engineer — React/Next.js App Router, TypeScript, Tailwind, Base UI. Builds and maintains UI and client state, reading the target repo's AGENTS.md/CLAUDE.md before changing anything."
     },
     {
       "name": "senior-frontend-engineer",
       "displayName": "Senior Frontend Engineer",
-      "source": "./plugins/agents/senior-frontend-engineer",
+      "source": "./agents/senior-frontend-engineer",
       "description": "Agentic senior frontend engineer — peer code reviewer for React/Next.js, TypeScript, Tailwind, and accessibility. Reviews diffs against design docs and acceptance criteria; produces blocking/non-blocking verdicts."
     },
     {
       "name": "product-manager",
       "displayName": "Product Manager",
-      "source": "./plugins/agents/product-manager",
+      "source": "./agents/product-manager",
       "description": "Agentic product manager — strategy docs, roadmaps, backlogs, sprint planning, task decomposition, specs, stakeholder updates, research synthesis, and competitive briefs. Follows docs/product/ and docs/work/{epic}/ conventions."
     },
     {
       "name": "principal-frontend-engineer",
       "displayName": "Principal Frontend Engineer",
-      "source": "./plugins/agents/principal-frontend-engineer",
+      "source": "./agents/principal-frontend-engineer",
       "description": "Agentic principal frontend engineer / tech lead — final technical gate on open PRs/MRs. Validates React/Next.js architecture, security, and acceptance-criteria coverage. Maps to delivery-review crew gate."
     },
     {
       "name": "qa-engineer",
       "displayName": "QA Engineer",
-      "source": "./plugins/agents/qa-engineer",
+      "source": "./agents/qa-engineer",
       "description": "Agentic QA engineer — validates changes after CI: deploy QA workspace, automated tests, exploratory pass, document defects. Maps to delivery-qa crew flow."
     },
     {
       "name": "delivery-lead",
       "displayName": "Delivery Lead",
-      "source": "./plugins/agents/delivery-lead",
+      "source": "./agents/delivery-lead",
       "description": "Agentic delivery lead — orchestrates the delivery chain: routes to agents/skills, sprint planning, backlog tracking, stakeholder updates, and epic validation."
     },
     {
       "name": "principal-architect",
       "displayName": "Principal Architect",
-      "source": "./plugins/agents/principal-architect",
+      "source": "./agents/principal-architect",
       "description": "Agentic principal architect — system architecture (solution.md), ADRs, epic-level design, and documentation alignment. Owns the Architecture track."
     }
   ]

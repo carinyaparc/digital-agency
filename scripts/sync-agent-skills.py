@@ -2,7 +2,7 @@
 """
 Re-sync each agent plugin's bundled skills from the skills source.
 
-Agent plugins under plugins/agents/<slug>/skills/<name>/ are vendored
+Agent plugins under agents/<slug>/skills/<name>/ are vendored
 copies of plugins/skills/<discipline>/skills/<name>/. The plugins/skills/ tree
 is the source of truth; run this after editing a skill there to propagate the
 change into every agent that bundles it.
@@ -14,7 +14,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-AGENTS = ROOT / "plugins" / "agents"
+AGENTS = ROOT / "agents"
 PRACTICES = ROOT / "plugins" / "skills"
 
 # index every skill name -> source dir in practices (skip shared refs)

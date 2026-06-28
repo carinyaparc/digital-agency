@@ -10,7 +10,7 @@ Each agent plugin is designed to be provider-agnostic: they can be deployed behi
 What's included
 
 - **[Agents](#agents)** — named, end-to-end workflow agents across engineering, product, and operations (Frontend Engineer through Delivery Lead). Each ships as a plugin **and** as a [Managed Agents](./managed-agents) you deploy via `/v1/agents`.
-- **[Agency Builder Hub](./agency-builder-hub)** — skill quality tooling: grade eval runs and QA skills before shipping (community skill install coming later).
+- **[Local maintainer tooling](./.agents)** — skill quality tooling for contributors: grade eval runs and QA skills before shipping (not a marketplace plugin).
 - **[Skill plugins](#skill-plugins)** — the underlying skills and commands, bundled by discipline. Install these on their own if you just want the skills without a full agent.
 - **[Connectors](#mcp-integrations)** — MCP data connectors, one provider per plugin. Install the ones your workflows need alongside agents and practices.
 
@@ -22,22 +22,22 @@ Each agent plugin is **self-contained** — it bundles the skills it uses, so in
 
 | Practice | Agent | What it does |
 |---|---|---|
-| **Engineering** | **[Frontend Engineer](./plugins/agents/frontend-engineer)** | Builds React/Next.js UI — components, client state, styling, and page composition. Reads the target repo's conventions before changing anything. |
-| **Engineering** | **[Senior Frontend Engineer](./plugins/agents/senior-frontend-engineer)** | Peer code reviewer for React/Next.js UI changes. Reviews diffs against design docs and acceptance criteria; produces blocking/non-blocking verdicts. Read-only — does not write code. |
-| **Engineering** | **[Principal Frontend Engineer](./plugins/agents/principal-frontend-engineer)** | Final technical gate on open PRs/MRs after peer review — architecture, security, and AC coverage. Tech-lead role; maps to delivery-review crew gate. |
-| **Engineering** | **[QA Engineer](./plugins/agents/qa-engineer)** | Validates changes after CI — QA workspace deploy, automated tests, AC-driven exploratory pass, defect documentation. Maps to delivery-qa crew flow. |
-| **Product** | **[Product Manager](./plugins/agents/product-manager)** | Full product delivery lifecycle — strategy, roadmap, backlog, sprint planning, task decomposition, specs, stakeholder updates, research synthesis, and epic validation. |
-| **Operations** | **[Delivery Lead](./plugins/agents/delivery-lead)** | Cross-cutting delivery steward — routes work to agents/skills, sprint planning, backlog tracking, stakeholder updates, epic validation. Maps to crew orchestration layer. |
-| **Engineering** | **[Principal Architect](./plugins/agents/principal-architect)** | System architecture — solution.md, ADRs, epic-level design, documentation alignment. Owns the Architecture track upstream of implementation. |
+| **Engineering** | **[Frontend Engineer](./agents/frontend-engineer)** | Builds React/Next.js UI — components, client state, styling, and page composition. Reads the target repo's conventions before changing anything. |
+| **Engineering** | **[Senior Frontend Engineer](./agents/senior-frontend-engineer)** | Peer code reviewer for React/Next.js UI changes. Reviews diffs against design docs and acceptance criteria; produces blocking/non-blocking verdicts. Read-only — does not write code. |
+| **Engineering** | **[Principal Frontend Engineer](./agents/principal-frontend-engineer)** | Final technical gate on open PRs/MRs after peer review — architecture, security, and AC coverage. Tech-lead role; maps to delivery-review crew gate. |
+| **Engineering** | **[QA Engineer](./agents/qa-engineer)** | Validates changes after CI — QA workspace deploy, automated tests, AC-driven exploratory pass, defect documentation. Maps to delivery-qa crew flow. |
+| **Product** | **[Product Manager](./agents/product-manager)** | Full product delivery lifecycle — strategy, roadmap, backlog, sprint planning, task decomposition, specs, stakeholder updates, research synthesis, and epic validation. |
+| **Operations** | **[Delivery Lead](./agents/delivery-lead)** | Cross-cutting delivery steward — routes work to agents/skills, sprint planning, backlog tracking, stakeholder updates, epic validation. Maps to crew orchestration layer. |
+| **Engineering** | **[Principal Architect](./agents/principal-architect)** | System architecture — solution.md, ADRs, epic-level design, documentation alignment. Owns the Architecture track upstream of implementation. |
 
 For Managed Agent deployment — `agent.yaml`, leaf-worker subagents, steering-event examples, and per-agent security notes — see **[managed-agents/](./managed-agents)**.
 
 ## Repository Layout
 
 ```
-agency-builder-hub/    # Skill quality hub — eval-grader, skills-qa
+.agents/               # Local maintainer tooling — eval-grader, skills-qa
+agents/                # Named agents — one self-contained plugin each
 plugins/
-  agents/              # Named agents — one self-contained plugin each
   connectors/          # MCP connector plugins — one provider each
   skills/              # Skill + command bundles by discipline
 managed-agents/        # Managed Agent cookbooks — one dir per agent
@@ -51,7 +51,7 @@ scripts/               # deploy-managed-agent.sh · check.py · validate.py · o
 In Cowork, open **Settings → Plugins → Add plugin** and either:
 
 - **Paste this repo URL** — `https://github.com/carinyaparc/digital-agency` — then pick the agents and skills you want from the marketplace list, or
-- **Upload a zip** — zip any directory under `plugins/` (e.g. `plugins/agents/product-manager/`) and drop it in.
+- **Upload a zip** — zip any agent directory (e.g. `agents/product-manager/`) or any directory under `plugins/` and drop it in.
 
 ### Claude Managed Agents
 
@@ -62,7 +62,7 @@ Coming soon.
 In Cursor, open **Settings → Plugins → Add plugin** and either:
 
 - **Paste this repo URL** — `https://github.com/carinyaparc/digital-agency` — then pick the agents and skills you want from the marketplace list, or
-- **Upload a zip** — zip any directory under `plugins/` (e.g. `plugins/agents/product-manager/`) and drop it in.
+- **Upload a zip** — zip any agent directory (e.g. `agents/product-manager/`) or any directory under `plugins/` and drop it in.
 
 ### Cursor Cloud Agents
 
@@ -72,12 +72,12 @@ Coming soon.
 
 | | What it is | Where it lives |
 |---|---|---|
-| **Agents** | Self-contained plugins that own a workflow end to end — system prompt plus the skills it uses. Cowork and the Managed Agent wrapper both reference the same directory. | `plugins/agents/<slug>/` |
-| **Skills** | Domain expertise, conventions, and step-by-step methods Claude draws on automatically when relevant. Authored once per discipline; each agent bundles a synced copy of the ones it needs. | `plugins/skills/<discipline>/skills/` (source) · `plugins/agents/<slug>/skills/` (bundled) |
+| **Agents** | Self-contained plugins that own a workflow end to end — system prompt plus the skills it uses. Cowork and the Managed Agent wrapper both reference the same directory. | `agents/<slug>/` |
+| **Skills** | Domain expertise, conventions, and step-by-step methods Claude draws on automatically when relevant. Authored once per discipline; each agent bundles a synced copy of the ones it needs. | `plugins/skills/<discipline>/skills/` (source) · `agents/<slug>/skills/` (bundled) |
 | **Commands** | Slash actions you trigger explicitly (`/implement`). | `plugins/skills/<discipline>/commands/` |
 | **Connectors** | [MCP servers](https://modelcontextprotocol.io/) that wire agents to your data — source code, code reviews, hosting, observability, analytics. | `plugins/connectors/<slug>/.mcp.json` |
 | **Managed-agent wrappers** | `agent.yaml` + depth-1 subagents + steering examples for headless deployment. | `managed-agents/<slug>/` |
-| **Builder hub** | Eval grading and skill design QA for maintainers. | `agency-builder-hub/` |
+| **Maintainer tooling** | Eval grading and skill design QA for contributors. | `.agents/` |
 
 Everything is file-based — markdown and JSON, no build step.
 
@@ -179,8 +179,8 @@ See [brand README](./plugins/skills/brand/README.md) for full detail.
 Everything here is markdown and YAML. Fork, edit, PR. For new content:
 
 - New skill → add it under `plugins/skills/<discipline>/skills/`, then run `python3 scripts/sync-agent-skills.py` to propagate to any agent that bundles it.
-- New agent → `plugins/agents/<slug>/` (with `agents/<slug>.md` + `skills/`) and a matching `managed-agents/<slug>/`.
-- Skill evals → add `evals/evals.json`; grade runs with **eval-grader** from [agency-builder-hub](./agency-builder-hub); run `/agency-builder-hub:skills-qa` before shipping.
+- New agent → `agents/<slug>/` (with `agents/<slug>.md` + `skills/`) and a matching `managed-agents/<slug>/`.
+- Skill evals → add `evals/evals.json`; grade runs with **eval-grader** from [.agents](./.agents); run **skills-qa** from [.agents/skills/skills-qa/SKILL.md](./.agents/skills/skills-qa/SKILL.md) before shipping.
 - Run `python3 scripts/check.py` before pushing — it lints every manifest, verifies all cross-file references resolve, and fails if any bundled skill has drifted from its vertical source.
 
 ## License
