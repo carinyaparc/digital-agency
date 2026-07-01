@@ -131,6 +131,18 @@ python3 scripts/validate.py --skip-drift    # skip bundled-skill drift (faster l
 Fix marketplace ↔ plugin.json description drift by updating both manifests together
 when you change a plugin description.
 
+### CI and local hooks
+
+- **CI** — `.github/workflows/validate.yml` runs `python3 scripts/validate.py --format json`
+  and the unit tests in `tests/` on every push to `main` and on pull requests.
+- **Pre-commit** — install a git hook that runs the same validation before each commit:
+
+  ```bash
+  scripts/install-git-hooks.sh
+  ```
+
+  The hook lives at `scripts/git-hooks/pre-commit` and is copied into `.git/hooks/`.
+
 ## Pull requests
 
 - Run `python3 scripts/sync-agent-skills.py` after any skill change under `skills/`.
