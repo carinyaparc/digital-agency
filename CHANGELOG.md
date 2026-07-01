@@ -18,6 +18,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- **`.github/workflows/validate.yml`** — CI gate running `validate.py` and unit tests on PRs
+- **`scripts/git-hooks/pre-commit`** and **`scripts/install-git-hooks.sh`** — optional local pre-commit validation
+- **`tests/test_validate.py`** — unit tests for `validate.py` frontmatter parsing and repo validation
 - **`scripts/validate.py`** — structural validation for marketplace manifests, plugin.json, MCP connectors, SKILL.md frontmatter, markdown cross-references, bundled-skill drift, and evals schema (`--format json`, `--strict`, `--skip-drift`)
 - **`.agents/`** local maintainer tooling — `plugin-eval` skill, `skills-qa` skill, and Agency Skill Design Framework in `references/`
 - Connector plugins under `plugins/connectors/` — GitHub, GitLab, Vercel, Figma, Linear, Playwright, Context7, Next.js DevTools
